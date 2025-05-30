@@ -38,7 +38,7 @@ export default function ClientNav() {
         navigationItems: convertedItems,
         showNavigation,
       }}
-      navMode="multi"
+      navMode="single"
       variant="glass"
       glassMorphism={false}
       showThemeSwitcher={true}

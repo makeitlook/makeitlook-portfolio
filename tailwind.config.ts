@@ -84,8 +84,14 @@ const config: Config = {
         third: "moveInCircle 40s linear infinite",
         fourth: "moveHorizontal 40s ease infinite",
         fifth: "moveInCircle 20s ease infinite",
+        slowPulse: "pulse 6s ease-in-out infinite",
+        subtleFade: "subtleFade 10s ease-in-out infinite alternate",
       },
       keyframes: {
+        subtleFade: {
+          "0%": { opacity: "0.2", transform: "scale(1)" },
+          "100%": { opacity: "0.4", transform: "scale(1.05)" },
+        },
         moveHorizontal: {
           "0%": {
             transform: "translateX(-50%) translateY(-10%)",
