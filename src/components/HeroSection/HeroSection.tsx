@@ -2,40 +2,89 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { LuClock, LuMessageCircle, LuShield } from "react-icons/lu";
 import {
   HeroHighlight,
   Highlight,
 } from "@/components/HeroHighlight/HeroHighlight";
 import Button from "@/components/Button/Button";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
-import { LuClock, LuMessageCircle, LuShield } from "react-icons/lu";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
+
+const projects = [
+  {
+    title: "Minimalist Brand Kit",
+    image: "/projects/project1.jpg",
+    tags: ["Branding", "Design"],
+  },
+  {
+    title: "Modern Portfolio Site",
+    image: "/projects/project2.jpg",
+    tags: ["UI/UX", "Web"],
+  },
+  {
+    title: "Restaurant Menu Design",
+    image: "/projects/project3.jpg",
+    tags: ["Print", "Brand"],
+  },
+  {
+    title: "Interactive Deck",
+    image: "/projects/project4.jpg",
+    tags: ["Presentation", "Motion"],
+  },
+  {
+    title: "Project 5",
+    image: "/projects/project4.jpg",
+    tags: ["Presentation", "Motion"],
+  },
+  {
+    title: "Project 6",
+    image: "/projects/project4.jpg",
+    tags: ["Presentation", "Motion"],
+  },
+  {
+    title: "Project 7",
+    image: "/projects/project4.jpg",
+    tags: ["Presentation", "Motion"],
+  },
+  {
+    title: "Project 8",
+    image: "/projects/project4.jpg",
+    tags: ["Presentation", "Motion"],
+  },
+];
+
+// Container animation variants for staggered children
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+      delayChildren: 0.4,
+    },
+  },
+};
+
+// Card animation variants for fade + slide up
+const cardVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
+};
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative w-full h-full px-4 pt-32 pb-24 sm:pt-48 sm:pb-32 overflow-hidden">
+    <section className="relative w-full overflow-hidden pt-32 pb-32 sm:pt-64 sm:pb-48">
       <HeroHighlight>
-        <div className="mx-auto max-w-5xl text-center">
-          {/* Premium badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-6"
-          >
-            <span className="inline-flex items-center px-6 py-2 rounded-full text-sm font-medium bg-neutral-dimmed text-text-secondary border border-border-main">
-              ✨ Premium Design Studio
-            </span>
-          </motion.div>
-
-          {/* Main headline */}
+        <div className="mx-auto text-center">
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: [20, -5, 0] }}
-            transition={{ duration: 0.5, ease: [0.4, 0.0, 0.2, 1] }}
-            className="text-balance text-center text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-primary mb-12"
+            transition={{ duration: 0.6 }}
+            className="text-balance text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-text-primary mb-6"
           >
-            <div className="mb-6">Bring Your Vision</div>
+            <span className="block mb-6">Bring Your Vision</span>
             <Highlight className="text-elements-secondary-main block px-2">
               To Life
             </Highlight>
@@ -45,77 +94,83 @@ const HeroSection: React.FC = () => {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="text-lg sm:text-xl text-secondary leading-relaxed max-w-3xl mx-auto mb-10"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto py-8"
           >
-            Transform your ideas into sophisticated, polished designs that make
-            an impact. From branding to digital content, every detail is crafted
-            to perfection.
+            Make It Look transforms bold ideas into elegant digital and print
+            experiences — designed to captivate, inspire, and convert.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center mb-12"
+            transition={{ duration: 0.5, delay: 0.4 }}
+            className="flex justify-center mb-16"
           >
-            <Link href="#contact-section">
-              <Button
-                variant="standard"
-                extraClassNames="text-text-clear py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group min-w-[200px]"
-              >
-                Start Your Project
-                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">
-                  →
-                </span>
-              </Button>
-            </Link>
-
-            <Link href="#portfolio">
-              <Button
-                variant="standard"
-                extraClassNames="text-text-clear py-4 px-8 rounded-full shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300 group min-w-[200px]"
-              >
-                View Portfolio
-              </Button>
-            </Link>
+            <Button
+              type="continue"
+              href="#portfolio"
+              extraClassNames="text-text-clear hover:scale-105 transition-all duration-300 group min-w-[200px]"
+            >
+              View Portfolio
+              <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">
+                <ArrowRight className="w-4 h-4" />
+              </span>
+            </Button>
           </motion.div>
 
-          {/* Social proof */}
+          {/* Animated Project Cards */}
+          <motion.div
+            className="flex gap-6"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+          >
+            {projects.map((project, index) => (
+              <motion.div
+                key={`${project.title}-${index}`}
+                className="relative w-[320px] flex-shrink-0"
+                style={{ height: "auto" }}
+                variants={cardVariants}
+              >
+                <div
+                  className={`absolute inset-0 transition-transform duration-300 shadow-lg transform hover:rotate-0
+          ${index % 2 === 0 ? "rotate-3" : "-rotate-3"}`}
+                >
+                  <ProjectCard
+                    title={project.title}
+                    image={project.image}
+                    tags={project.tags}
+                    className="w-full"
+                  />
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Social Proof */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.9 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-8 text-sm text-secondary"
+            transition={{ delay: 0.8, duration: 0.6 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16 text-sm text-text-secondary"
           >
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-elements-secondary-dimmed to-elements-secondary-shadow-heavy flex items-center justify-center shadow-sm">
-                <IconWrapper
-                  icon={LuClock}
-                  className="h-4 w-4 text-text-clear"
-                />
+            {[
+              { icon: LuClock, label: "Fast Turnaround" },
+              { icon: LuShield, label: "Premium Quality" },
+              { icon: LuMessageCircle, label: "Free Consultation" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-center justify-center gap-2">
+                <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-dimmed-heavy shadow-lg transform transition-all duration-200 hover:scale-110 hover:rotate-3 border border-border-dimmed">
+                  <IconWrapper
+                    icon={item.icon}
+                    className="h-4 w-4 transition-colors duration-200"
+                  />
+                </div>
+                <span className="font-semibold">{item.label}</span>
               </div>
-              <span className="font-medium">Fast Turnaround</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-elements-secondary-dimmed to-elements-secondary-shadow-heavy flex items-center justify-center shadow-sm">
-                <IconWrapper
-                  icon={LuShield}
-                  className="h-4 w-4 text-text-clear"
-                />
-              </div>
-              <span className="font-medium">Premium Quality</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-elements-secondary-dimmed to-elements-secondary-shadow-heavy flex items-center justify-center shadow-sm">
-                <IconWrapper
-                  icon={LuMessageCircle}
-                  className="h-4 w-4 text-text-clear"
-                />
-              </div>
-              <span className="font-medium">Free Consultation</span>
-            </div>
+            ))}
           </motion.div>
         </div>
       </HeroHighlight>

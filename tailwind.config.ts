@@ -86,8 +86,13 @@ const config: Config = {
         fifth: "moveInCircle 20s ease infinite",
         slowPulse: "pulse 6s ease-in-out infinite",
         subtleFade: "subtleFade 10s ease-in-out infinite alternate",
+        "scroll-x": "scroll-x 40s linear infinite",
       },
       keyframes: {
+        "scroll-x": {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
         subtleFade: {
           "0%": { opacity: "0.2", transform: "scale(1)" },
           "100%": { opacity: "0.4", transform: "scale(1.05)" },

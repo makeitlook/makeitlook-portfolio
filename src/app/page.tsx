@@ -1,9 +1,10 @@
 import AnimatedDiv from "@/components/AnimatedDiv/AnimatedDiv";
-import PageLayout from "@/components/Layouts/PageLayout";
 import SEO from "@/components/SEO/SEO";
 import HeroSection from "@/components/HeroSection/HeroSection";
 import { AnimatedBackground } from "@/components/AnimatedBackground/AnimatedBackground";
 import About from "./about/page";
+import Services from "./services/page";
+import { CTA } from "@/components/CTA/CTA";
 
 export default function Home() {
   return (
@@ -12,7 +13,7 @@ export default function Home() {
         title="Make It Look"
         description="A creative studio bringing your brand to life through bold web design, custom print, and standout visuals. From websites to business cards — we make it look good."
         url="https://www.makeitlook.co.uk"
-        image="/images/og-image.png" // make sure this exists and represents your brand
+        image="/images/og-image.png"
         keywords={[
           "Make It Look",
           "Web Design",
@@ -25,13 +26,40 @@ export default function Home() {
           "Marketing Materials",
         ]}
       />
-      <AnimatedBackground />
-      <section id="home" className="h-full">
-        <AnimatedDiv>
-          <HeroSection />
-        </AnimatedDiv>
+
+      {/* Full viewport fixed animated background */}
+
+      <div className="relative">
+        <div
+          className="absolute inset-0"
+          style={{
+            maskImage:
+              "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+            WebkitMaskImage:
+              "linear-gradient(to bottom, transparent, black 20%, black 80%, transparent)",
+          }}
+        >
+          <AnimatedBackground />
+        </div>
+
+        <section id="home">
+          <AnimatedDiv>
+            <HeroSection />
+          </AnimatedDiv>
+        </section>
+
+        <section id="services" className="pt-12">
+          <Services />
+        </section>
+      </div>
+
+      <div className="sm:px-32 justify-start items-center">
+        <CTA />
+      </div>
+
+      <section id="about" className="pt-12">
+        <About />
       </section>
-      <About />
     </>
   );
 }

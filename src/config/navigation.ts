@@ -38,13 +38,6 @@ export function useNavigationConfig(): {
       //   icon: LuHouse,
       // },
       {
-        name: "About",
-        sectionId: "about",
-        path: "/about",
-        current: pathname === "/about",
-        icon: LuInfo,
-      },
-      {
         name: "Services",
         sectionId: "services",
         path: "/services",
@@ -76,6 +69,13 @@ export function useNavigationConfig(): {
         //     description: "Expert technology consulting",
         //   },
         // ],
+      },
+      {
+        name: "About",
+        sectionId: "about",
+        path: "/about",
+        current: pathname === "/about",
+        icon: LuInfo,
       },
       {
         name: "Contact",
@@ -130,13 +130,14 @@ export const fullNavigation: {
 } = {
   navigationItems: [
     // { name: "Home", sectionId: "home", path: "/", current: true },
-    { name: "About", sectionId: "about", path: "/about", current: false },
     {
       name: "Services",
       sectionId: "services",
       path: "/services",
       current: false,
     },
+    { name: "About", sectionId: "about", path: "/about", current: false },
+
     { name: "Contact", sectionId: "contact", path: "/contact", current: false },
   ],
   showNavigation: true,

@@ -1,159 +1,241 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ReactNode, useRef } from "react";
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+// If you have specific icons, you might import them like this:
+// import { BriefcaseIcon, LightBulbIcon, CodeIcon, RocketIcon } from '@heroicons/react/24/outline'; // Example
+
+const skills = [
+  "UI Design",
+  "UX Design",
+  "User Research",
+  "Figma",
+  "Prototyping",
+  "Design System",
+  "Interaction Design",
+  "Usability Testing",
+  "Wireframing",
+  "UI Animation",
+  "Logo Design",
+  "Framer Development",
+  "Pitchdeck Design",
+];
+
+const processSteps = [
+  {
+    id: "brief",
+    title: "Project Brief",
+    description:
+      "Understanding your goals, audience, and challenges to build a solid foundation for the project. We'll dive deep into your vision and requirements.",
+    // icon: <BriefcaseIcon className="w-6 h-6 mr-2" /> // Example icon
+  },
+  {
+    id: "design",
+    title: "Design & Prototype",
+    description:
+      "Creating innovative designs and interactive prototypes that bring your vision to life. Expect pixel-perfect mockups and clickable prototypes.",
+    // icon: <LightBulbIcon className="w-6 h-6 mr-2" /> // Example icon
+  },
+  {
+    id: "develop",
+    title: "Development & Testing",
+    description:
+      "Building robust solutions with rigorous testing to ensure flawless performance across all devices. Quality assurance is key at this stage.",
+    // icon: <CodeIcon className="w-6 h-6 mr-2" /> // Example icon
+  },
+  {
+    id: "launch",
+    title: "Launch & Optimize",
+    description:
+      "Deploying your project and continuously optimizing for maximum impact and growth. We'll monitor performance and iterate based on feedback.",
+    // icon: <RocketIcon className="w-6 h-6 mr-2" /> // Example icon
+  },
+];
 
 const About = () => {
-  const heroRef = useRef(null);
-  const { scrollYProgress: pageScrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end end"],
-  });
+  const [activeStep, setActiveStep] = useState(0);
 
-  const heroBgParallaxY = useTransform(
-    pageScrollYProgress,
-    [0, 1],
-    ["0%", "-30%"]
-  );
+  // Animation variants for staggering children
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.07, // Time delay between each child animation
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
+
+  // General fade-in from bottom animation for sections
+  const sectionAnimation = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.2 }, // Trigger when 20% of the element is in view
+    transition: { duration: 0.7, ease: "easeOut" },
+  };
 
   return (
-    <div className="text-text-primary">
-      {/* Hero Section */}
-      <motion.section
-        ref={heroRef}
-        className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 py-32 text-center"
-      >
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-text-primary">
+      {/* Top Section */}
+      <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-20 md:mb-32">
+        {/* Left - Sticky Heading */}
         <motion.div
-          style={{ y: heroBgParallaxY }}
-          className="absolute inset-0 -z-10 bg-neutral-dimmed"
-        />
-        <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-5xl font-semibold tracking-tight sm:text-6xl"
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          className="w-full md:w-1/2 md:sticky md:top-24"
         >
-          Make It Look
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-4 max-w-2xl text-lg text-text-secondary sm:text-xl"
-        >
-          Strategic Design. Measurable Results.
-        </motion.p>
-      </motion.section>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight text-text-primary">
+            Helping people get their product{" "}
+            <span className="text-elements-primary-main">professionally</span>{" "}
+            designed.
+          </h1>
+        </motion.div>
 
-      {/* Mission Section */}
-      <section className="py-24 px-6 sm:py-32 bg-background text-text-primary">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-6">
-            Our Guiding Philosophy
-          </h2>
-          <p className="text-lg sm:text-xl text-text-secondary leading-relaxed">
-            We believe great design is more than aesthetics; it's a strategic
-            asset that solves problems, communicates clearly, and drives growth.
+        {/* Right - Content */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          className="w-full md:w-1/2 prose prose-lg lg:prose-xl max-w-none text-text-secondary prose-headings:text-text-primary prose-headings:font-semibold prose-p:leading-relaxed"
+        >
+          <h2 className="text-2xl sm:text-3xl mb-4">My Story</h2>
+          <p className="mb-6">
+            Hi I'm Aman, an engineer by training and a designer at heart. My
+            journey started in a world of precision and problem-solving, but my
+            true passion was always in making things look polished and visually
+            appealing. Over time, I became the go-to person for transforming
+            ideas into sleek, professional designs—whether it was for
+            presentations, branding, or digital content.
           </p>
-        </div>
-      </section>
 
-      {/* Advantage Section */}
-      <section className="py-24 px-6 sm:py-32 bg-neutral-100 dark:bg-neutral-900">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-4xl font-semibold mb-12">
-            The Aman Advantage
-          </h2>
-          <div className="grid gap-12 md:grid-cols-3">
-            {["Creative Precision", "Tailored Approach", "Results-Driven"].map(
-              (title, i) => (
-                <motion.div
-                  key={title}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
-                  transition={{ delay: i * 0.2 }}
-                  className="text-left md:text-center"
-                >
-                  <h3 className="text-xl font-semibold text-elements-primary-main mb-2">
-                    {title}
-                  </h3>
-                  <p className="text-text-secondary">
-                    {title === "Creative Precision" &&
-                      "We combine design flair with engineering discipline to ensure your projects are as functional as they are beautiful."}
-                    {title === "Tailored Approach" &&
-                      "Every brand is unique. We take time to understand yours, crafting solutions that reflect your identity and goals."}
-                    {title === "Results-Driven" &&
-                      "Our work doesn’t just look good — it performs. We design with purpose and measure success with impact."}
-                  </p>
-                </motion.div>
-              )
-            )}
-          </div>
-        </div>
-      </section>
+          <h2 className="text-2xl sm:text-3xl mb-4 mt-10">Philosophy</h2>
+          <p className="mb-6">
+            Great design isn't just about aesthetics—it's about creating a story
+            that leaves a lasting impact. I approach every project with a blend
+            of technical expertise and creative vision, ensuring that each
+            detail is perfectly refined to match your unique vision.
+          </p>
 
-      {/* Process Section */}
-      <section className="py-24 px-6 sm:py-32 bg-background">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-center text-3xl sm:text-4xl font-semibold mb-12">
-            Our Collaborative Process
+          <h2 className="text-2xl sm:text-3xl mb-4 mt-10">What I Do</h2>
+          <p>
+            At Make It Look, I turn your ideas into reality. I work one-on-one
+            with clients to create designs that not only look good but also
+            communicate a powerful message. My projects range from branding and
+            marketing materials to digital assets that stand out in today's
+            competitive landscape.
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Skills Section */}
+      <motion.section
+        {...sectionAnimation}
+        className="py-16"
+        aria-labelledby="skills-heading"
+      >
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            id="skills-heading"
+            className="text-3xl sm:text-4xl font-bold text-center mb-12 text-text-primary"
+          >
+            My Skillset
           </h2>
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.6 }}
-            className="flex items-start gap-4 bg-white dark:bg-neutral-900 shadow-md rounded-lg p-6"
+            className="flex flex-wrap justify-center gap-3 sm:gap-4"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.2 }}
           >
-            <span className="text-3xl font-bold text-elements-primary-main">
-              01
-            </span>
-            <div>
-              <h3 className="text-xl font-semibold mb-1 text-text-primary">
-                Discovery & Strategy
-              </h3>
-              <p className="text-text-secondary">
-                Understanding your goals, audience, and challenges to build a
-                solid foundation.
-              </p>
-            </div>
+            {skills.map((skill) => (
+              <motion.span
+                key={skill}
+                variants={itemVariants}
+                className="bg-neutral-dimmed-heavy px-4 py-2 sm:px-5 sm:py-2.5 rounded-full border border-border-dimmed text-text-secondary text-sm sm:text-base select-none cursor-default
+                           hover:bg-elements-primary-main hover:text-elements-primary-contrastText hover:border-elements-primary-main transition-all duration-200 ease-in-out shadow-sm hover:shadow-md"
+              >
+                {skill}
+              </motion.span>
+            ))}
           </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* CTA Section */}
-      <section className="bg-elements-primary-main py-20 text-center text-white sm:py-32">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          className="text-3xl sm:text-4xl font-semibold mb-6"
-        >
-          Ready to Create Something Amazing?
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.2 }}
-          className="text-lg sm:text-xl mb-8 max-w-xl mx-auto"
-        >
-          Let's discuss how we can bring your vision to life with impactful
-          design.
-        </motion.p>
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          viewport={{ once: true, amount: 0.5 }}
-          transition={{ delay: 0.4 }}
-          className="rounded-lg bg-white px-8 py-3 font-semibold text-elements-primary-main shadow-md transition-colors duration-300 hover:bg-gray-100"
-        >
-          Get In Touch
-        </motion.button>
-      </section>
+      {/* How I Work Section */}
+      <motion.section
+        {...sectionAnimation}
+        className="mt-20 py-16 md:py-24"
+        aria-labelledby="process-heading"
+      >
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2
+            id="process-heading"
+            className="text-3xl sm:text-4xl font-bold text-center mb-6 text-text-primary"
+          >
+            How I Work
+          </h2>
+          <p className="text-lg text-text-secondary leading-relaxed mb-12 md:mb-16 text-center max-w-2xl mx-auto">
+            My process is designed to be collaborative and transparent, ensuring
+            we're aligned every step of the way from concept to launch.
+          </p>
+
+          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-start">
+            {/* Step Selectors */}
+            <div className="w-full lg:w-1/3 flex lg:flex-col gap-3 md:gap-4 justify-center lg:justify-start">
+              {processSteps.map((step, i) => (
+                <motion.button
+                  key={step.id}
+                  onClick={() => setActiveStep(i)}
+                  className={`w-full p-3 md:p-4 rounded-lg text-left transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-elements-primary-main focus-visible:ring-opacity-50
+                    ${
+                      activeStep === i
+                        ? "bg-elements-primary-main text-elements-primary-contrastText shadow-lg scale-105"
+                        : "bg-neutral-dimmed-heavy hover:bg-opacity-80 text-text-primary shadow-sm hover:shadow-md border border-border-dimmed"
+                    }`}
+                  aria-pressed={activeStep === i}
+                  whileHover={{ y: activeStep !== i ? -2 : 0 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <div className="flex items-center">
+                    {/* step.icon */} {/* Uncomment if you add icons */}
+                    <span className="font-semibold text-sm sm:text-base">{`0${
+                      i + 1
+                    }. ${step.title}`}</span>
+                  </div>
+                </motion.button>
+              ))}
+            </div>
+
+            {/* Step Description */}
+            <div className="w-full lg:w-2/3 min-h-[200px] md:min-h-[250px]">
+              {" "}
+              {/* Added min-height to reduce layout shift */}
+              <motion.div
+                key={activeStep} // Re-animate when step changes
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="bg-card-background p-6 md:p-8 rounded-xl shadow-xl text-text-primary h-full flex flex-col justify-center" // Added shadow-xl
+              >
+                {/* processSteps[activeStep].icon && <div className="mb-3 text-elements-primary-main">{React.cloneElement(processSteps[activeStep].icon, {className: "w-8 h-8"})}</div> */}
+                <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-elements-primary-main">
+                  {processSteps[activeStep].title}
+                </h3>
+                <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
+                  {processSteps[activeStep].description}
+                </p>
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };
