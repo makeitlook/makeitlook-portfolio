@@ -1,10 +1,6 @@
 import Web3ContactForm from "@/components/ContactForm/ContactForm";
 import PageLayout from "@/components/Layouts/PageLayout";
-import {
-  EnvelopeIcon,
-  PhoneIcon,
-  BuildingOffice2Icon,
-} from "@heroicons/react/24/outline";
+import { Mail, Phone, Building2 } from "lucide-react";
 
 export default function Contact() {
   return (
@@ -25,7 +21,7 @@ export default function Contact() {
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Address</span>
-                    <BuildingOffice2Icon
+                    <Building2
                       aria-hidden="true"
                       className="h-7 w-6 text-gray-400"
                     />
@@ -39,7 +35,7 @@ export default function Contact() {
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Telephone</span>
-                    <PhoneIcon
+                    <Phone
                       aria-hidden="true"
                       className="h-7 w-6 text-gray-400"
                     />
@@ -56,7 +52,7 @@ export default function Contact() {
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Email</span>
-                    <EnvelopeIcon
+                    <Mail
                       aria-hidden="true"
                       className="h-7 w-6 text-gray-400"
                     />
