@@ -29,3 +29,8 @@ export default function ProjectPage({ params }: Props) {
     </PageLayout>
   );
 }
+
+// Needed for Next.js static export when using dynamic routes
+export function generateStaticParams() {
+  return projects.map((p) => ({ slug: p.slug }));
+}
