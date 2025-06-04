@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import Image from "next/image";
+import Tag from "@/components/Tag/Tag";
 
 interface ProjectCardProps {
   title: string;
@@ -37,12 +38,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         {tags.length > 0 && (
           <div className="space-x-2">
             {tags.map((tag, idx) => (
-              <span
-                key={idx}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-dimmed text-text-tertiary border border-border-dimmed"
-              >
-                {tag}
-              </span>
+              <Tag key={idx}>{tag}</Tag>
             ))}
           </div>
         )}

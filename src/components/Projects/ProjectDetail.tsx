@@ -52,11 +52,11 @@ interface Project {
   ProjectInfo: ProjectInfo;
 }
 
-interface ProjectSingleProps {
+interface ProjectDetailProps {
   project: Project;
 }
 
-const ProjectSingle: React.FC<ProjectSingleProps> = ({ project }) => {
+const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
   return (
     <div className="max-w-7xl mx-auto px-4">
       {/* Header */}
@@ -201,4 +201,4 @@ const ProjectSingle: React.FC<ProjectSingleProps> = ({ project }) => {
   );
 };
 
-export default ProjectSingle;
+export default ProjectDetail;

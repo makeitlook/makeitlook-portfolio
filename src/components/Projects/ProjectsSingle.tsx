@@ -2,24 +2,24 @@
 
 import React from "react";
 import Image from "next/image";
+import Button from "@/components/Button/Button";
+import Tag from "@/components/Tag/Tag";
 
 interface ProjectSingleProps {
   id: number | string;
   title: string;
   description?: string;
   img: string; // rename from image to img here
-  category: string;
   tags?: string[];
-  link?: string;
+  url: string;
 }
 
 const ProjectSingle: React.FC<ProjectSingleProps> = ({
   title,
   description,
   img,
-  category,
   tags = [],
-  link,
+  url,
 }) => {
   return (
     <article className="bg-card-background rounded-3xl border border-border-dimmed shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
@@ -43,24 +43,16 @@ const ProjectSingle: React.FC<ProjectSingleProps> = ({
         )}
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-xs font-medium rounded-full px-3 py-1 bg-background-secondary border border-border-dimmed text-text-tertiary"
-            >
-              {tag}
-            </span>
+            <Tag key={i}>{tag}</Tag>
           ))}
         </div>
-        {link && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto inline-block text-elements-primary-main font-semibold hover:underline"
-          >
-            View Project →
-          </a>
-        )}
+        <Button
+          type="text"
+          href={`/projects/${url}`}
+          extraClassNames="mt-auto inline-block"
+        >
+          View Project →
+        </Button>
       </div>
     </article>
   );

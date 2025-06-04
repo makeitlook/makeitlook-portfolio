@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import { ArrowRight, Star } from "lucide-react";
+import Tag from "@/components/Tag/Tag";
 import Button from "@/components/Button/Button";
 
 export const ServiceCard = ({
@@ -46,12 +47,9 @@ export const ServiceCard = ({
 
           <div className="flex flex-wrap gap-2 mb-6">
             {service.features.map((feature: string, idx: number) => (
-              <span
-                key={idx}
-                className="px-3 py-1 text-xs font-medium rounded-full bg-neutral-dimmed text-text-tertiary border border-border-dimmed transition-all duration-300 hover:bg-neutral-dimmed-heavy hover:shadow-md hover:text-text-secondary"
-              >
+              <Tag key={idx} className="hover:bg-neutral-dimmed-heavy hover:shadow-md hover:text-text-secondary">
                 {feature}
-              </span>
+              </Tag>
             ))}
           </div>
 
