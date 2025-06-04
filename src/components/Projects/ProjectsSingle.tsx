@@ -2,24 +2,23 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProjectSingleProps {
   id: number | string;
   title: string;
   description?: string;
   img: string; // rename from image to img here
-  category: string;
   tags?: string[];
-  link?: string;
+  url: string;
 }
 
 const ProjectSingle: React.FC<ProjectSingleProps> = ({
   title,
   description,
   img,
-  category,
   tags = [],
-  link,
+  url,
 }) => {
   return (
     <article className="bg-card-background rounded-3xl border border-border-dimmed shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden flex flex-col">
@@ -51,16 +50,12 @@ const ProjectSingle: React.FC<ProjectSingleProps> = ({
             </span>
           ))}
         </div>
-        {link && (
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-auto inline-block text-elements-primary-main font-semibold hover:underline"
-          >
-            View Project →
-          </a>
-        )}
+        <Link
+          href={`/projects/${url}`}
+          className="mt-auto inline-block text-elements-primary-main font-semibold hover:underline"
+        >
+          View Project →
+        </Link>
       </div>
     </article>
   );
