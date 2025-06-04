@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { FloatingElement } from "@/components/FloatingElement/FloatingElement";
 import { ServiceCard } from "@/components/ServiceCard/ServiceCard";
+import Button from "@/components/Button/Button";
 
 const Services = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
@@ -149,10 +150,14 @@ const Services = () => {
         </div>
 
         <div className="text-center mt-20">
-          <div className="inline-flex items-center gap-4 bg-elements-primary-main hover:bg-elements-primary-shadow text-elements-primary-contrastText px-8 py-4 rounded-full font-semibold text-lg shadow-2xl hover:shadow-elements-primary-shadow/25 transform hover:scale-105 transition-all duration-300 cursor-pointer">
+          <Button
+            type="continue"
+            href="/contact"
+            extraClassNames="inline-flex gap-4 px-8 py-4 text-lg shadow-2xl hover:shadow-elements-primary-shadow/25 transform hover:scale-105 group"
+          >
             <span>Ready to bring your vision to life?</span>
-            <ArrowRight className="w-5 h-5 animate-pulse" />
-          </div>
+            <ArrowRight className="w-5 h-5 animate-pulse group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
     </div>
