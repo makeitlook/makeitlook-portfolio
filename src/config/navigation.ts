@@ -1,13 +1,6 @@
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { IconType } from "react-icons";
-import {
-  LuHouse,
-  LuInfo,
-  LuFile,
-  LuCalendarDays,
-  LuPhone,
-} from "react-icons/lu";
+import { LucideIcon, Home, Info, File, CalendarDays, Phone } from "lucide-react";
 
 // Define navigation item structure
 export interface NavigationItem {
@@ -15,7 +8,7 @@ export interface NavigationItem {
   sectionId?: string; // For anchor-based single-page nav
   path?: string; // For route-based multi-page nav
   current: boolean;
-  icon?: IconType;
+  icon?: LucideIcon;
   description?: string;
   children?: NavigationItem[];
   disabled?: boolean;
@@ -35,21 +28,21 @@ export function useNavigationConfig(): {
       //   sectionId: "home",
       //   path: "/",
       //   current: pathname === "/",
-      //   icon: LuHouse,
+      //   icon: Home,
       // },
       {
         name: "Services",
         sectionId: "services",
         path: "/services",
         current: pathname.startsWith("/services"),
-        icon: LuFile,
+        icon: File,
         // children: [
         //   {
         //     name: "Web Development",
         //     sectionId: "web-development",
         //     path: "/services/web-development",
         //     current: pathname === "/services/web-development",
-        //     icon: LuFile,
+        //     icon: File,
         //     description: "Custom web development solutions",
         //   },
         //   {
@@ -57,7 +50,7 @@ export function useNavigationConfig(): {
         //     sectionId: "app-design",
         //     path: "/services/app-design",
         //     current: pathname === "/services/app-design",
-        //     icon: LuFile,
+        //     icon: File,
         //     description: "Mobile and web application design",
         //   },
         //   {
@@ -65,7 +58,7 @@ export function useNavigationConfig(): {
         //     sectionId: "consulting",
         //     path: "/services/consulting",
         //     current: pathname === "/services/consulting",
-        //     icon: LuFile,
+        //     icon: File,
         //     description: "Expert technology consulting",
         //   },
         // ],
@@ -75,21 +68,21 @@ export function useNavigationConfig(): {
         sectionId: "about",
         path: "/about",
         current: pathname === "/about",
-        icon: LuInfo,
+        icon: Info,
       },
       {
         name: "Portfolio",
         sectionId: "portfolio",
         path: "/portfolio",
         current: pathname === "/portfolio",
-        icon: LuInfo,
+        icon: Info,
       },
       {
         name: "Contact",
         sectionId: "contact",
         path: "/contact",
         current: pathname === "/contact",
-        icon: LuPhone,
+        icon: Phone,
       },
     ],
     [pathname]

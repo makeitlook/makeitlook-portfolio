@@ -2,12 +2,11 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { MdErrorOutline } from "react-icons/md";
+import { AlertCircle } from "lucide-react";
 import { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner"; // Or your own Spinner
-import { IconBaseProps } from "react-icons";
 
-const ErrorIcon = MdErrorOutline as unknown as React.FC<IconBaseProps>;
+const ErrorIcon = AlertCircle;
 
 export default function ServerErrorPage() {
   const [showPage, setShowPage] = useState(false);

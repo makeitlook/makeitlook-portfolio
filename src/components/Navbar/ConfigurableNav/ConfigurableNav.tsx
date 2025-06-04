@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from "react";
-import { LuMenu, LuX, LuChevronDown, LuPhone } from "react-icons/lu";
+import { Menu, X, ChevronDown, Phone } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
@@ -274,7 +274,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         onClick={closeMenu}
       >
         {cta.phoneNumber && (
-          <IconWrapper icon={LuPhone} className="mr-2 h-4 w-4" />
+          <IconWrapper icon={Phone} className="mr-2 h-4 w-4" />
         )}
         {cta.text || "Contact Us"}
       </Link>
@@ -324,7 +324,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
               transition={{ duration: 0.2 }}
             >
               <IconWrapper
-                icon={LuChevronDown}
+                icon={ChevronDown}
                 className="px-1 w-7 h-7 text-text-tertiary"
               />
             </motion.div>
@@ -504,7 +504,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
               transition={{ duration: 0.2, ease: "easeInOut" }}
             >
               <IconWrapper
-                icon={LuChevronDown}
+                icon={ChevronDown}
                 className="px-1 w-7 h-7 text-text-tertiary"
               />
             </motion.div>
@@ -677,9 +677,9 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           transition={{ duration: 0.2 }}
         >
           {mobileMenuOpen ? (
-            <IconWrapper icon={LuX} className="w-5 h-5 block" />
+            <IconWrapper icon={X} className="w-5 h-5 block" />
           ) : (
-            <IconWrapper icon={LuMenu} className="block w-6 h-6" />
+            <IconWrapper icon={Menu} className="block w-6 h-6" />
           )}
         </motion.div>
       </button>

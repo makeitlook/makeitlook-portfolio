@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { FiClock, FiTag } from "react-icons/fi";
+import { Clock, Tag } from "lucide-react";
 import RelatedProjects from "@/components/Projects/RelatedProjects";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 
@@ -66,16 +66,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
         </p>
         <div className="flex gap-10 mb-6">
           <div className="flex items-center gap-2">
-            <IconWrapper
-              icon={FiClock}
-              className="text-xl text-text-secondary"
-            />
+            <IconWrapper icon={Clock} className="text-xl text-text-secondary" />
             <span className="font-general-regular text-text-primary leading-none">
               {project.ProjectHeader.publishDate}
             </span>
           </div>
           <div className="flex items-center gap-2">
-            <IconWrapper icon={FiTag} className="w-4 h-4 text-text-secondary" />
+            <IconWrapper icon={Tag} className="w-4 h-4 text-text-secondary" />
             <span className="font-general-regular text-text-primary leading-none">
               {project.ProjectHeader.tags}
             </span>

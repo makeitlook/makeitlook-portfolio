@@ -1,11 +1,11 @@
 import { v4 as uuidv4 } from "uuid";
 import {
-  FiFacebook,
-  FiInstagram,
-  FiLinkedin,
-  FiTwitter,
-  FiYoutube,
-} from "react-icons/fi";
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+  Youtube,
+} from "lucide-react";
 
 export interface CompanyInfo {
   id: string;
@@ -145,7 +145,7 @@ export const projectsData: Project[] = [
       //   {
       //     id: uuidv4(),
       //     name: "Twitter",
-      //     icon: <FiTwitter />,
+      //     icon: <Twitter />,
       //     url: "https://twitter.com/realstoman",
       //   },
       //   // ... other social links
