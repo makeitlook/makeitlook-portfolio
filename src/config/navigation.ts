@@ -71,6 +71,13 @@ export function useNavigationConfig(): {
         // ],
       },
       {
+        name: "Portfolio",
+        sectionId: "portfolio",
+        path: "/portfolio",
+        current: pathname.startsWith("/portfolio"),
+        icon: LuCalendarDays,
+      },
+      {
         name: "About",
         sectionId: "about",
         path: "/about",
@@ -108,6 +115,7 @@ export const mainNavigation: {
       path: "/services",
       current: false,
     },
+    { name: "Portfolio", sectionId: "portfolio", path: "/portfolio", current: false },
     { name: "Contact", sectionId: "contact", path: "/contact", current: false },
   ],
   showNavigation: true,
@@ -119,6 +127,7 @@ export const minimalistNavigation: {
 } = {
   navigationItems: [
     { name: "Home", sectionId: "home", path: "/", current: true },
+    { name: "Portfolio", sectionId: "portfolio", path: "/portfolio", current: false },
     { name: "Contact", sectionId: "contact", path: "/contact", current: false },
   ],
   showNavigation: true,
@@ -136,6 +145,7 @@ export const fullNavigation: {
       path: "/services",
       current: false,
     },
+    { name: "Portfolio", sectionId: "portfolio", path: "/portfolio", current: false },
     { name: "About", sectionId: "about", path: "/about", current: false },
 
     { name: "Contact", sectionId: "contact", path: "/contact", current: false },
