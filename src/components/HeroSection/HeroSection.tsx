@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, MessageCircle, Shield } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import {
   HeroHighlight,
   Highlight,
@@ -10,49 +10,7 @@ import {
 import Button from "@/components/Button/Button";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import ProjectCard from "@/components/ProjectCard/ProjectCard";
-
-const projects = [
-  {
-    title: "Minimalist Brand Kit",
-    image: "/projects/project1.jpg",
-    tags: ["Branding", "Design"],
-  },
-  {
-    title: "Modern Portfolio Site",
-    image: "/projects/project2.jpg",
-    tags: ["UI/UX", "Web"],
-  },
-  {
-    title: "Restaurant Menu Design",
-    image: "/projects/project3.jpg",
-    tags: ["Print", "Brand"],
-  },
-  {
-    title: "Interactive Deck",
-    image: "/projects/project4.jpg",
-    tags: ["Presentation", "Motion"],
-  },
-  {
-    title: "Project 5",
-    image: "/projects/project4.jpg",
-    tags: ["Presentation", "Motion"],
-  },
-  {
-    title: "Project 6",
-    image: "/projects/project4.jpg",
-    tags: ["Presentation", "Motion"],
-  },
-  {
-    title: "Project 7",
-    image: "/projects/project4.jpg",
-    tags: ["Presentation", "Motion"],
-  },
-  {
-    title: "Project 8",
-    image: "/projects/project4.jpg",
-    tags: ["Presentation", "Motion"],
-  },
-];
+import { heroProjects, socialProofItems } from "@/data/heroData";
 
 // Container animation variants for staggered children
 const containerVariants = {
@@ -126,7 +84,7 @@ const HeroSection: React.FC = () => {
             initial="hidden"
             animate="visible"
           >
-            {projects.map((project, index) => (
+            {heroProjects.map((project, index) => (
               <motion.div
                 key={`${project.title}-${index}`}
                 className="relative w-[320px] flex-shrink-0"
@@ -155,11 +113,7 @@ const HeroSection: React.FC = () => {
             transition={{ delay: 0.8, duration: 0.6 }}
             className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16 text-sm text-text-secondary"
           >
-            {[
-              { icon: Clock, label: "Fast Turnaround" },
-              { icon: Shield, label: "Premium Quality" },
-              { icon: MessageCircle, label: "Free Consultation" },
-            ].map((item, i) => (
+            {socialProofItems.map((item, i) => (
               <div key={i} className="flex items-center justify-center gap-2">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-dimmed-heavy shadow-lg transform transition-all duration-200 hover:scale-110 hover:rotate-3 border border-border-dimmed">
                   <IconWrapper

@@ -1,21 +1,13 @@
 "use client";
 
 import React from "react";
+import { projectCategories } from "@/data/projectFilters";
 
 interface ProjectsFilterProps {
   selectedCategory: string;
   setSelectedCategory: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const categories = [
-  "Branding",
-  "UI/UX",
-  "Web",
-  "Print",
-  "Motion",
-  "Presentation",
-  "All",
-];
 
 const ProjectsFilter: React.FC<ProjectsFilterProps> = ({
   selectedCategory,
@@ -23,7 +15,7 @@ const ProjectsFilter: React.FC<ProjectsFilterProps> = ({
 }) => {
   return (
     <div className="flex flex-wrap gap-3 justify-center sm:justify-start">
-      {categories.map((category) => {
+      {projectCategories.map((category) => {
         const isActive =
           category.toLowerCase() === selectedCategory.toLowerCase() ||
           (category === "All" && selectedCategory === "");
