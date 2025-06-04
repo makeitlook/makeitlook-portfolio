@@ -62,7 +62,7 @@ export default function Home() {
         <About />
       </section>
 
-      <section id="portfolio" className="pt-12">
+      <section id="portfolio">
         <ProjectsIndex />
       </section>
     </>

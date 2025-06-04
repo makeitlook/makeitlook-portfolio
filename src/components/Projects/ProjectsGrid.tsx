@@ -6,6 +6,7 @@ import ProjectsFilter from "@/components/Projects/ProjectsFilter";
 import ProjectSingle from "@/components/Projects/ProjectsSingle";
 import { projectsData, Project } from "@/data/projectsData";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
+import { Pencil } from "lucide-react";
 
 const ProjectsGrid: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -23,14 +24,23 @@ const ProjectsGrid: React.FC = () => {
   );
 
   return (
-    <section className="py-12">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-text-primary">
-          Projects Portfolio
+    <section className="pb-24">
+      <div className="text-center mb-16 relative">
+        <div className="inline-flex items-center gap-2 text-elements-secondary-main mb-4">
+          <Pencil className="w-8 h-8 text-elements-primary-main animate-pulse" />
+          <span className="text-sm font-semibold uppercase tracking-wider text-text-secondary">
+            Projects Portfolio
+          </span>
+        </div>
+        <h2 className="text-6xl font-bold mb-6 text-text-primary">
+          Recent Work
         </h2>
-        <p className="text-text-secondary mt-2">
+        <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
           Search projects by title or filter by category
         </p>
+        <div className="mt-8 flex justify-center">
+          <div className="w-24 h-1 bg-elements-primary-main rounded-full"></div>
+        </div>
       </div>
 
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10 max-w-5xl mx-auto px-4">

@@ -1,6 +1,13 @@
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
-import { LucideIcon, Home, Info, File, CalendarDays, Phone } from "lucide-react";
+import {
+  LucideIcon,
+  Home,
+  Info,
+  File,
+  CalendarDays,
+  Phone,
+} from "lucide-react";
 
 // Define navigation item structure
 export interface NavigationItem {
@@ -23,13 +30,13 @@ export function useNavigationConfig(): {
 
   const navigationItems: NavigationItem[] = useMemo(
     () => [
-      // {
-      //   name: "Home",
-      //   sectionId: "home",
-      //   path: "/",
-      //   current: pathname === "/",
-      //   icon: Home,
-      // },
+      {
+        name: "",
+        sectionId: "home",
+        path: "/",
+        current: pathname === "/",
+        icon: Home,
+      },
       {
         name: "Services",
         sectionId: "services",

@@ -28,8 +28,6 @@ interface ProjectInfo {
   ObjectivesHeading: string;
   ObjectivesDetails: string;
   Technologies: Technology[];
-  SocialSharingHeading: string;
-  // SocialSharing?: { icon: React.ReactNode; url: string }[]; // Uncomment if needed
   ProjectDetailsHeading: string;
   ProjectDetails: ProjectDetails[];
 }

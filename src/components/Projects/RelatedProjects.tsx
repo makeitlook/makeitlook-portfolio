@@ -11,7 +11,7 @@ interface RelatedProjectsProps {
     img: string;
     category: string;
     tags?: string[];
-    link?: string;
+    url?: string;
   }>;
 }
 

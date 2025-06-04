@@ -121,7 +121,7 @@ const Services = () => {
         <div className="text-center mb-16 relative">
           <div className="inline-flex items-center gap-2 text-elements-secondary-main mb-4">
             <Zap className="w-8 h-8 text-elements-primary-main animate-pulse" />
-            <span className="text-sm font-semibold uppercase tracking-wider">
+            <span className="text-sm font-semibold uppercase tracking-wider text-text-secondary">
               Creative Excellence
             </span>
           </div>

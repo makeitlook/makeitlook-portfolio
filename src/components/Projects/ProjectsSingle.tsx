@@ -11,7 +11,7 @@ interface ProjectSingleProps {
   description?: string;
   img: string; // rename from image to img here
   tags?: string[];
-  url: string;
+  url?: string;
 }
 
 const ProjectSingle: React.FC<ProjectSingleProps> = ({
