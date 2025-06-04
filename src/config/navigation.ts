@@ -78,6 +78,13 @@ export function useNavigationConfig(): {
         icon: LuInfo,
       },
       {
+        name: "Portfolio",
+        sectionId: "portfolio",
+        path: "/portfolio",
+        current: pathname === "/portfolio",
+        icon: LuInfo,
+      },
+      {
         name: "Contact",
         sectionId: "contact",
         path: "/contact",
