@@ -1,6 +1,7 @@
 import Web3ContactForm from "@/components/ContactForm/ContactForm";
 import PageLayout from "@/components/Layouts/PageLayout";
 import { Mail, Phone, Building2 } from "lucide-react";
+import { contactInfo } from "@/data/contactData";
 
 export default function Contact() {
   return (
@@ -27,9 +28,9 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    545 Mavis Island
+                    {contactInfo.addressLine1}
                     <br />
-                    Chicago, IL 99191
+                    {contactInfo.addressLine2}
                   </dd>
                 </div>
                 <div className="flex gap-x-4">
@@ -41,11 +42,8 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    <a
-                      href="tel:+1 (555) 234-5678"
-                      className="hover:text-gray-900"
-                    >
-                      +1 (555) 234-5678
+                    <a href={`tel:${contactInfo.phone}`} className="hover:text-gray-900">
+                      {contactInfo.phone}
                     </a>
                   </dd>
                 </div>
@@ -58,11 +56,8 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    <a
-                      href="mailto:hello@example.com"
-                      className="hover:text-gray-900"
-                    >
-                      hello@example.com
+                    <a href={`mailto:${contactInfo.email}`} className="hover:text-gray-900">
+                      {contactInfo.email}
                     </a>
                   </dd>
                 </div>
