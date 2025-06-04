@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import Tag from "@/components/Tag";
 
 interface ProjectSingleProps {
   id: number | string;
@@ -42,12 +43,9 @@ const ProjectSingle: React.FC<ProjectSingleProps> = ({
         )}
         <div className="flex flex-wrap gap-2 mb-4">
           {tags.map((tag, i) => (
-            <span
-              key={i}
-              className="text-xs font-medium rounded-full px-3 py-1 bg-background-secondary border border-border-dimmed text-text-tertiary"
-            >
+            <Tag key={i} className="bg-background-secondary">
               {tag}
-            </span>
+            </Tag>
           ))}
         </div>
         <Link

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FiSearch } from "react-icons/fi";
+import { Search } from "lucide-react";
 import ProjectsFilter from "@/components/Projects/ProjectsFilter";
 import ProjectSingle from "@/components/Projects/ProjectsSingle";
 import { projectsData, Project } from "@/data/projectsData";
@@ -35,10 +35,7 @@ const ProjectsGrid: React.FC = () => {
 
       <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10 max-w-5xl mx-auto px-4">
         <div className="flex items-center gap-2 border border-border-dimmed rounded-lg px-3 py-2 w-full sm:max-w-xs bg-background-secondary">
-          <IconWrapper
-            icon={FiSearch}
-            className="text-text-secondary w-5 h-5"
-          />
+          <IconWrapper icon={Search} className="text-text-secondary w-5 h-5" />
           <input
             type="search"
             aria-label="Search projects"

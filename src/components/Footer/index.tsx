@@ -1,4 +1,4 @@
-import { FiInstagram } from "react-icons/fi";
+import { Instagram } from "lucide-react";
 import AppFooterCopyright from "./AppFooterCopyright";
 
 function AppFooter() {
@@ -16,7 +16,7 @@ function AppFooter() {
               target="__blank"
               className="cursor-pointer rounded-lgshadow-sm duration-300 shadow"
             >
-              <FiInstagram className="h-8 w-8 text-elements-primary-main" />
+              <Instagram className="h-8 w-8 text-elements-primary-main" />
             </a>
           </ul>
         </div> */}

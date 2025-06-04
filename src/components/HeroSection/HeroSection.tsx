@@ -2,8 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
-import { LuClock, LuMessageCircle, LuShield } from "react-icons/lu";
+import { ArrowRight, Clock, MessageCircle, Shield } from "lucide-react";
 import {
   HeroHighlight,
   Highlight,
@@ -157,9 +156,9 @@ const HeroSection: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-8 mt-16 text-sm text-text-secondary"
           >
             {[
-              { icon: LuClock, label: "Fast Turnaround" },
-              { icon: LuShield, label: "Premium Quality" },
-              { icon: LuMessageCircle, label: "Free Consultation" },
+              { icon: Clock, label: "Fast Turnaround" },
+              { icon: Shield, label: "Premium Quality" },
+              { icon: MessageCircle, label: "Free Consultation" },
             ].map((item, i) => (
               <div key={i} className="flex items-center justify-center gap-2">
                 <div className="inline-flex items-center justify-center w-10 h-10 rounded-xl bg-neutral-dimmed-heavy shadow-lg transform transition-all duration-200 hover:scale-110 hover:rotate-3 border border-border-dimmed">

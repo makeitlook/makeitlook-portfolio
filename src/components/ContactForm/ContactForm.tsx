@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PrivacyPolicyModal from "@/components/Modal/PrivacyPolicyModal";
 import { motion } from "framer-motion";
 import Modal from "@/components/Modal/Modal";
+import Button from "@/components/Button/Button";
 
 // Toast Component
 const Toast = ({
@@ -299,13 +300,9 @@ const ContactForm: React.FC<FormsProps> = ({
 
           {/* Submit Button */}
           <div className="mt-10">
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="block w-full rounded-md bg-elements-primary-main px-3.5 py-2.5 text-center text-sm font-semibold text-elements-primary-contrastText shadow-sm hover:bg-elements-primary-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-elements-primary-main transition-all duration-300 disabled:opacity-70"
-            >
+            <Button type="continue" className="w-full" disabled={isSubmitting}>
               {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

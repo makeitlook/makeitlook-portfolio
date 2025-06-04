@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaGhost } from "react-icons/fa";
+import { Ghost } from "lucide-react";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import PageLayout from "@/components/Layouts/PageLayout";
 
@@ -16,7 +16,7 @@ export default function NotFound() {
           transition={{ repeat: Infinity, repeatType: "mirror", duration: 1 }}
         >
           <IconWrapper
-            icon={FaGhost}
+            icon={Ghost}
             size={64}
             className="text-elements-primary-main"
           />

@@ -1,10 +1,10 @@
 // components/IconWrapper.tsx
 "use client";
 import React from "react";
-import { IconType } from "react-icons";
+import { LucideIcon } from "lucide-react";
 
 interface IconWrapperProps {
-  icon: IconType;
+  icon: LucideIcon;
   size?: number;
   className?: string;
 }
