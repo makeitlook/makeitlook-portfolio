@@ -5,6 +5,7 @@ import { AnimatedBackground } from "@/components/AnimatedBackground/AnimatedBack
 import About from "./about/page";
 import Services from "./services/page";
 import { CTA } from "@/components/CTA/CTA";
+import ProjectsIndex from "./projects/page";
 
 export default function Home() {
   return (
@@ -59,6 +60,10 @@ export default function Home() {
 
       <section id="about" className="pt-12">
         <About />
+      </section>
+
+      <section id="portfolio" className="pt-12">
+        <ProjectsIndex />
       </section>
     </>
   );
