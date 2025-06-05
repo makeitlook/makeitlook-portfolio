@@ -31,7 +31,7 @@ const cardVariants = {
 
 const HeroSection: React.FC = () => {
   return (
-    <section className="relative w-full overflow-hidden pt-32 pb-32 sm:pt-64 sm:pb-48">
+    <section className="relative w-full overflow-hidden pt-32 pb-12 sm:pt-48 sm:pb-48">
       <HeroHighlight>
         <div className="mx-auto text-center">
           {/* Headline */}
@@ -78,32 +78,33 @@ const HeroSection: React.FC = () => {
           </motion.div>
 
           {/* Animated Project Cards */}
-          <motion.div
-            className="flex gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            {heroProjects.map((project, index) => (
-              <motion.div
-                key={`${project.title}-${index}`}
-                className="relative w-[320px] flex-shrink-0"
-                style={{ height: "auto" }}
-                variants={cardVariants}
-              >
-                <div
-                  className={`absolute inset-0 transition-transform duration-300 shadow-lg transform hover:rotate-0
-          ${index % 2 === 0 ? "rotate-3" : "-rotate-3"}`}
+          <motion.div className="relative w-full overflow-hidden py-6">
+            <motion.div
+              className="flex gap-6 whitespace-nowrap"
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+            >
+              {heroProjects.map((project, index) => (
+                <motion.div
+                  key={`${project.title}-${index}`}
+                  className="inline-block w-[320px] flex-shrink-0"
+                  variants={cardVariants}
                 >
-                  <ProjectCard
-                    title={project.title}
-                    image={project.image}
-                    tags={project.tags}
-                    className="w-full"
-                  />
-                </div>
-              </motion.div>
-            ))}
+                  <div
+                    className={`transform transition-transform duration-300 hover:rotate-0 rounded-xl
+            ${index % 2 === 0 ? "rotate-3" : "-rotate-3"}`}
+                  >
+                    <ProjectCard
+                      title={project.title}
+                      image={project.image}
+                      tags={project.tags}
+                      className="w-full"
+                    />
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
           </motion.div>
 
           {/* Social Proof */}

@@ -276,9 +276,9 @@ export const CTA: React.FC = () => {
           className="text-lg sm:text-xl text-text-clear/90 mb-10 max-w-xl mx-auto leading-relaxed drop-shadow-sm"
           variants={itemVariants}
         >
-          Collaborate to create something truly outstanding. Whether you're
-          starting fresh or refining, the right design and development will
-          bring your vision to life.
+          Let’s collaborate to create something remarkable. Whether you’re
+          starting fresh or elevating your brand, the perfect design and
+          development will bring your vision to life.
         </motion.p>
 
         {/* Your Button component usage inside motion wrapper */}
@@ -290,7 +290,7 @@ export const CTA: React.FC = () => {
         >
           <Button
             type="undo"
-            href="#portfolio"
+            href="#contact"
             extraClassNames="text-text-clear hover:scale-105 transition-all duration-300 group min-w-[200px] shadow-lg hover:shadow-xl backdrop-blur-sm"
           >
             Get in Touch

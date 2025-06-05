@@ -1,14 +1,14 @@
 "use client";
 
 import React from "react";
-import ProjectSingle from "@/components/Projects/ProjectsSingle";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
 
 interface RelatedProjectsProps {
   projects: Array<{
     id: string | number;
     title: string;
     description?: string;
-    img: string;
+    image: string;
     category: string;
     tags?: string[];
     url?: string;
@@ -25,7 +25,7 @@ const RelatedProjects: React.FC<RelatedProjectsProps> = ({ projects }) => {
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <ProjectSingle key={project.id} {...project} />
+          <ProjectCard key={project.id} {...project} />
         ))}
       </div>
     </section>

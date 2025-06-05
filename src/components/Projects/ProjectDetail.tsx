@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Clock, Tag } from "lucide-react";
 import RelatedProjects from "@/components/Projects/RelatedProjects";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
+import AnimatedDiv from "@/components/AnimatedDiv/AnimatedDiv";
 
 interface CompanyInfo {
   id: number | string;
@@ -34,7 +35,7 @@ interface ProjectInfo {
 
 interface ProjectImage {
   id: number | string;
-  img: string;
+  image: string;
   title: string;
 }
 
@@ -56,7 +57,7 @@ interface ProjectDetailProps {
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
   return (
-    <div className="max-w-7xl mx-auto px-4">
+    <AnimatedDiv className="max-w-7xl mx-auto px-4 pt-16">
       {/* Header */}
       <div>
         <p className="font-general-medium text-left text-3xl sm:text-4xl font-bold text-text-primary mb-7 mt-14 sm:mt-20">
@@ -83,10 +84,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
         {project.ProjectImages.map((image) => (
           <div
             key={image.id}
-            className="mb-10 sm:mb-0 rounded-xl overflow-hidden shadow-lg cursor-pointer"
+            className="mb-10 sm:mb-0 rounded-xl overflow-hidden shadow-lg"
           >
             <Image
-              src={image.img}
+              src={image.image}
               alt={image.title}
               layout="responsive"
               width={100}
@@ -192,7 +193,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
       </div>
 
       <RelatedProjects projects={[]} />
-    </div>
+    </AnimatedDiv>
   );
 };
 

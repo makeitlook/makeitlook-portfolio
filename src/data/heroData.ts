@@ -1,14 +1,36 @@
 import { Clock, MessageCircle, Shield } from "lucide-react";
 
 export const heroProjects = [
-  { title: "Minimalist Brand Kit", image: "/projects/project1.jpg", tags: ["Branding", "Design"] },
-  { title: "Modern Portfolio Site", image: "/projects/project2.jpg", tags: ["UI/UX", "Web"] },
-  { title: "Restaurant Menu Design", image: "/projects/project3.jpg", tags: ["Print", "Brand"] },
-  { title: "Interactive Deck", image: "/projects/project4.jpg", tags: ["Presentation", "Motion"] },
-  { title: "Project 5", image: "/projects/project4.jpg", tags: ["Presentation", "Motion"] },
-  { title: "Project 6", image: "/projects/project4.jpg", tags: ["Presentation", "Motion"] },
-  { title: "Project 7", image: "/projects/project4.jpg", tags: ["Presentation", "Motion"] },
-  { title: "Project 8", image: "/projects/project4.jpg", tags: ["Presentation", "Motion"] },
+  {
+    title: "NextGen Roofing - ID Cards",
+    image: "images/hero-projects/nextgen-id.png",
+    tags: ["Print", "ID Cards", "Branding"],
+  },
+  {
+    title: "NextGen Roofing - Website",
+    image: "images/hero-projects/nextgen-website.png",
+    tags: ["Web", "UI/UX", "Branding"],
+  },
+  {
+    title: "Beauty Base - Business Cards",
+    image: "images/hero-projects/beautybar.png",
+    tags: ["Print", "Business Cards", "Branding"],
+  },
+  {
+    title: "Checkmate Barbers - Leaflets",
+    image: "images/hero-projects/leaflets.png",
+    tags: ["Print", "Leaflets", "Marketing"],
+  },
+  {
+    title: "NextGen Roofing - Business Cards",
+    image: "images/hero-projects/nextgenbusiness.png",
+    tags: ["Print", "Business Cards", "Branding"],
+  },
+  {
+    title: "Checkmate Barbers - Prints",
+    image: "images/hero-projects/prints.png",
+    tags: ["Print", "Marketing Materials", "Branding"],
+  },
 ];
 
 export const socialProofItems = [

@@ -56,7 +56,7 @@ export const ServiceCard = ({
             ))}
           </div>
 
-          <Button
+          {/* <Button
             type="text"
             extraClassNames="text-text-clear hover:scale-105 transition-all duration-300 group min-w-[200px] w-full"
           >
@@ -64,7 +64,7 @@ export const ServiceCard = ({
             <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">
               <ArrowRight className="w-4 h-4" />
             </span>
-          </Button>
+          </Button> */}
         </div>
 
         <div className="absolute top-4 right-4 opacity-20">

@@ -3,10 +3,10 @@
 import React, { useState } from "react";
 import { Search } from "lucide-react";
 import ProjectsFilter from "@/components/Projects/ProjectsFilter";
-import ProjectSingle from "@/components/Projects/ProjectsSingle";
 import { projectsData, Project } from "@/data/projectsData";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import { Pencil } from "lucide-react";
+import ProjectCard from "@/components/ProjectCard/ProjectCard";
 
 const ProjectsGrid: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -54,16 +54,16 @@ const ProjectsGrid: React.FC = () => {
           />
         </div>
 
-        <ProjectsFilter
+        {/* <ProjectsFilter
           selectedCategory={selectedCategory}
           setSelectedCategory={setSelectedCategory}
-        />
+        /> */}
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto px-4">
         {searchedProjects.length > 0 ? (
           searchedProjects.map((project) => (
-            <ProjectSingle key={project.id} {...project} />
+            <ProjectCard key={project.id} {...project} />
           ))
         ) : (
           <p className="text-center col-span-full text-text-secondary">

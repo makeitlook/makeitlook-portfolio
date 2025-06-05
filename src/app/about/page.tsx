@@ -62,12 +62,12 @@ const About = () => {
         >
           <h2 className="text-2xl sm:text-3xl mb-4">My Story</h2>
           <p className="mb-6">
-            Hi I'm Aman, an engineer by training and a designer at heart. My
-            journey started in a world of precision and problem-solving, but my
-            true passion was always in making things look polished and visually
-            appealing. Over time, I became the go-to person for transforming
-            ideas into sleek, professional designs—whether it was for
-            presentations, branding, or digital content.
+            I’m Aman — an engineer by training and a designer at heart. My
+            journey began in a world of precision and problem-solving, but my
+            true passion has always been creating polished, visually striking
+            designs. Over time, I became the trusted expert for transforming
+            ideas into sleek, professional visuals — whether it’s presentations,
+            branding, or digital content.
           </p>
 
           <h2 className="text-2xl sm:text-3xl mb-4 mt-10">Philosophy</h2>
