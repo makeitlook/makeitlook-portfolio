@@ -1,11 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import { Clock, Tag } from "lucide-react";
 import RelatedProjects from "@/components/Projects/RelatedProjects";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import AnimatedDiv from "@/components/AnimatedDiv/AnimatedDiv";
+import { motion, useInView } from "framer-motion";
 
 interface CompanyInfo {
   id: number | string;
@@ -55,11 +56,30 @@ interface ProjectDetailProps {
   project: Project;
 }
 
+const fadeInUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } },
+};
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
+  const headerRef = useRef(null);
+  const imagesRef = useRef(null);
+  const infoRef = useRef(null);
+  const detailsRef = useRef(null);
+
+  const headerInView = useInView(headerRef, { once: true, amount: 0.5 });
+  const imagesInView = useInView(imagesRef, { once: true, amount: 0.3 });
+  const infoInView = useInView(infoRef, { once: true, amount: 0.3 });
+  const detailsInView = useInView(detailsRef, { once: true, amount: 0.3 });
+
   return (
-    <AnimatedDiv className="max-w-7xl mx-auto px-4 pt-16">
-      {/* Header */}
-      <div>
+    <div className="max-w-7xl mx-auto px-4 pt-16">
+      <motion.div
+        ref={headerRef}
+        initial="hidden"
+        animate={headerInView ? "visible" : "hidden"}
+        variants={fadeInUp}
+      >
         <p className="font-general-medium text-left text-3xl sm:text-4xl font-bold text-text-primary mb-7 mt-14 sm:mt-20">
           {project.ProjectHeader.title}
         </p>
@@ -77,14 +97,25 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
             </span>
           </div>
         </div>
-      </div>
+      </motion.div>
 
-      {/* Gallery */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12">
+      <motion.div
+        ref={imagesRef}
+        className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12"
+        initial="hidden"
+        animate={imagesInView ? "visible" : "hidden"}
+        variants={{
+          hidden: {},
+          visible: {
+            transition: { staggerChildren: 0.25 }, // slower stagger (previously 0.15)
+          },
+        }}
+      >
         {project.ProjectImages.map((image) => (
-          <div
+          <motion.div
             key={image.id}
             className="mb-10 sm:mb-0 rounded-xl overflow-hidden shadow-lg"
+            variants={fadeInUp}
           >
             <Image
               src={image.image}
@@ -95,15 +126,30 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
               className="object-cover rounded-xl"
               priority
             />
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      {/* Info */}
       <div className="flex flex-col sm:flex-row gap-10 mt-14">
-        <div className="sm:w-1/3 text-text-primary">
-          {/* Client Details */}
-          <div className="mb-7">
+        <motion.div
+          ref={infoRef}
+          className="sm:w-1/3 text-text-primary"
+          initial="hidden"
+          animate={infoInView ? "visible" : "hidden"}
+          variants={{
+            hidden: { opacity: 0, x: 20 },
+            visible: {
+              opacity: 1,
+              x: 0,
+              transition: {
+                duration: 1.2,
+                ease: "easeOut",
+                staggerChildren: 0.15,
+              },
+            },
+          }}
+        >
+          <motion.div variants={fadeInUp} className="mb-7">
             <p className="font-general-regular text-2xl font-semibold text-text-secondary mb-2">
               {project.ProjectInfo.ClientHeading}
             </p>
@@ -132,52 +178,34 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
-          {/* Objectives */}
-          <div className="mb-7">
+          <motion.div variants={fadeInUp} className="mb-7">
             <p className="font-general-regular text-2xl font-semibold text-text-secondary mb-2">
               {project.ProjectInfo.ObjectivesHeading}
             </p>
             <p className="font-general-regular text-text-primary">
               {project.ProjectInfo.ObjectivesDetails}
             </p>
-          </div>
+          </motion.div>
 
-          {/* Technologies */}
-          <div className="mb-7">
+          <motion.div variants={fadeInUp} className="mb-7">
             <p className="font-general-regular text-2xl font-semibold text-text-secondary mb-2">
               {project.ProjectInfo.Technologies[0].title}
             </p>
             <p className="font-general-regular text-text-primary">
               {project.ProjectInfo.Technologies[0].techs.join(", ")}
             </p>
-          </div>
+          </motion.div>
+        </motion.div>
 
-          {/* Social Sharing (commented out, uncomment if needed) */}
-          {/* <div>
-            <p className="font-general-regular text-2xl font-semibold text-text-secondary mb-2">
-              {project.ProjectInfo.SocialSharingHeading}
-            </p>
-            <div className="flex items-center gap-3 mt-5">
-              {project.ProjectInfo.SocialSharing?.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Share Project"
-                  className="bg-background-secondary text-text-secondary hover:text-text-primary p-2 rounded-lg shadow-sm transition duration-300"
-                >
-                  {social.icon}
-                </a>
-              ))}
-            </div>
-          </div> */}
-        </div>
-
-        {/* Project Details */}
-        <div className="sm:w-2/3 text-text-primary mt-10 sm:mt-0">
+        <motion.div
+          ref={detailsRef}
+          className="sm:w-2/3 text-text-primary mt-10 sm:mt-0"
+          initial="hidden"
+          animate={detailsInView ? "visible" : "hidden"}
+          variants={fadeInUp}
+        >
           <p className="text-text-primary text-2xl font-bold mb-7">
             {project.ProjectInfo.ProjectDetailsHeading}
           </p>
@@ -189,11 +217,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ project }) => {
               {detail.details}
             </p>
           ))}
-        </div>
+        </motion.div>
       </div>
 
       <RelatedProjects projects={[]} />
-    </AnimatedDiv>
+    </div>
   );
 };
 
