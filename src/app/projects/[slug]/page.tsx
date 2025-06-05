@@ -3,15 +3,15 @@ import { projectsData } from "@/data/projectsData";
 import { notFound } from "next/navigation";
 import SEO from "@/components/SEO/SEO";
 
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   return projectsData.map((project) => ({ slug: project.url }));
 }
 
-interface PageProps {
+interface ProjectPageProps {
   params: { slug: string };
 }
 
-export default function ProjectPage({ params }: PageProps) {
+export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projectsData.find((p) => p.url === params.slug);
   if (!project) notFound();
   return (
