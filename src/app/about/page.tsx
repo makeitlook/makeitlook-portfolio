@@ -7,7 +7,7 @@ import Image from "next/image";
 import SEO from "@/components/SEO/SEO";
 
 // If you have specific icons, you might import them like this:
-// import { BriefcaseIcon, LightBulbIcon, CodeIcon, RocketIcon } from '@heroicons/react/24/outline'; // Example
+// import { BriefcaseIcon, LightBulbIcon, CodeIcon, RocketIcon } from &#39;@heroicons/react/24/outline&#39;; // Example
 
 const About = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -40,7 +40,7 @@ const About = () => {
     <>
       <SEO
         title="About"
-        description="Learn more about Make It Look's design process and expertise."
+        description="Learn more about Make It Look&#39;s design process and expertise."
         url="https://makeitlook.co.uk/about"
         image="/images/og-image.png"
       />
@@ -80,10 +80,11 @@ const About = () => {
 
             <h2 className="text-2xl sm:text-3xl mb-4 mt-10">Philosophy</h2>
             <p className="mb-6">
-              Great design isn't just about aesthetics—it's about creating a
-              story that leaves a lasting impact. I approach every project with
-              a blend of technical expertise and creative vision, ensuring that
-              each detail is perfectly refined to match your unique vision.
+              Great design isn&#39;t just about aesthetics—it&#39;s about
+              creating a story that leaves a lasting impact. I approach every
+              project with a blend of technical expertise and creative vision,
+              ensuring that each detail is perfectly refined to match your
+              unique vision.
             </p>
 
             <h2 className="text-2xl sm:text-3xl mb-4 mt-10">What I Do</h2>
@@ -92,7 +93,7 @@ const About = () => {
               with clients to create designs that not only look good but also
               communicate a powerful message. My projects range from branding
               and marketing materials to digital assets that stand out in
-              today's competitive landscape.
+              today&#39;s competitive landscape.
             </p>
           </motion.div>
         </div>
@@ -146,7 +147,7 @@ const About = () => {
             </h2>
             <p className="text-lg text-text-secondary leading-relaxed mb-12 md:mb-16 text-center max-w-2xl mx-auto">
               My process is designed to be collaborative and transparent,
-              ensuring we're aligned every step of the way from concept to
+              ensuring we&#39;re aligned every step of the way from concept to
               launch.
             </p>
 
