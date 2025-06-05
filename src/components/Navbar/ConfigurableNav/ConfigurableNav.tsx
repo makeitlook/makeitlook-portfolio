@@ -281,12 +281,22 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     );
   };
 
+  // Helper to build href for single page navigation on slug pages
+  const getHref = (
+    sectionId?: string,
+    path?: string,
+    href?: string,
+  ) => {
+    if (navMode === "single" && sectionId) {
+      return pathname === "/" ? `#${sectionId}` : `/#${sectionId}`;
+    }
+    return path || href || "/";
+  };
+
   // Desktop nav item renderer
   const renderNavItem = (item: NavItem) => {
-    const href =
-      navMode === "single" && item.sectionId
-        ? `#${item.sectionId}`
-        : item.path || item.href || "/";
+    const href = getHref(item.sectionId, item.path, item.href);
+    const shouldScroll = href.startsWith("#") || !href.includes("#");
     const isActive =
       navMode === "single"
         ? activeSection === item.sectionId
@@ -343,10 +353,13 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                   <div className="p-2">
                     {item.children.map((subItem, index) => {
                       const Icon = subItem.icon;
-                      const subHref =
-                        navMode === "single" && subItem.sectionId
-                          ? `#${subItem.sectionId}`
-                          : subItem.path || subItem.href || "/";
+                      const subHref = getHref(
+                        subItem.sectionId,
+                        subItem.path,
+                        subItem.href,
+                      );
+                      const subShouldScroll =
+                        subHref.startsWith("#") || !subHref.includes("#");
                       const isSubActive =
                         navMode === "single"
                           ? activeSection === subItem.sectionId
@@ -389,7 +402,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                               {!subItem.disabled && (
                                 <Link
                                   href={subHref}
-                                  scroll={href.startsWith("#")}
+                                  scroll={subShouldScroll}
                                   prefetch={false}
                                   onClick={() => {
                                     setDropdownOpen(null);
@@ -418,7 +431,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         prefetch={false}
         key={item.name}
         href={href}
-        scroll={href.startsWith("#")}
+        scroll={shouldScroll}
         className={classNames(
           variant === "glass"
             ? "text-md tracking-wide transition-colors font-medium"
@@ -434,10 +447,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
 
   // Mobile nav item renderer with enhanced animations and styling
   const renderMobileNavItem = (item: NavItem, index: number) => {
-    const href =
-      navMode === "single" && item.sectionId
-        ? `#${item.sectionId}`
-        : item.path || item.href || "/";
+    const href = getHref(item.sectionId, item.path, item.href);
     const isActive =
       navMode === "single"
         ? activeSection === item.sectionId
@@ -528,10 +538,13 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                   )}
                 >
                   {item.children.map((subItem, subIndex) => {
-                    const subHref =
-                      navMode === "single" && subItem.sectionId
-                        ? `#${subItem.sectionId}`
-                        : subItem.path || subItem.href || "/";
+                    const subHref = getHref(
+                      subItem.sectionId,
+                      subItem.path,
+                      subItem.href,
+                    );
+                    const subShouldScroll =
+                      subHref.startsWith("#") || !subHref.includes("#");
                     const isSubActive =
                       navMode === "single"
                         ? activeSection === subItem.sectionId
@@ -546,7 +559,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                       >
                         <Link
                           href={subHref}
-                          scroll={href.startsWith("#")}
+                          scroll={subShouldScroll}
                           className={classNames(
                             "group flex items-center rounded-lg p-3 text-sm font-medium transition-all duration-200",
                             variant === "glass"
@@ -598,7 +611,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       >
         <Link
           href={href}
-          scroll={href.startsWith("#")}
+          scroll={shouldScroll}
           className={classNames(
             "flex items-center rounded-lg p-3 text-md font-medium transition-all duration-200 border-l-4",
             variant === "glass"
