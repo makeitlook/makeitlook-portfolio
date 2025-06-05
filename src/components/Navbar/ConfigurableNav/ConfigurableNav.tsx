@@ -288,8 +288,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     href?: string,
   ) => {
     if (navMode === "single" && sectionId) {
-      const prefix = pathname === "/" ? "" : "/";
-      return `${prefix}#${sectionId}`;
+      return pathname === "/" ? `#${sectionId}` : `/#${sectionId}`;
     }
     return path || href || "/";
   };
@@ -400,7 +399,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                               {!subItem.disabled && (
                                 <Link
                                   href={subHref}
-                                  scroll={subHref.startsWith("#")}
+                                  scroll={!subHref.includes("#")}
                                   prefetch={false}
                                   onClick={() => {
                                     setDropdownOpen(null);
@@ -429,7 +428,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         prefetch={false}
         key={item.name}
         href={href}
-        scroll={href.startsWith("#")}
+        scroll={!href.includes("#")}
         className={classNames(
           variant === "glass"
             ? "text-md tracking-wide transition-colors font-medium"
@@ -555,7 +554,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                       >
                         <Link
                           href={subHref}
-                          scroll={subHref.startsWith("#")}
+                          scroll={!subHref.includes("#")}
                           className={classNames(
                             "group flex items-center rounded-lg p-3 text-sm font-medium transition-all duration-200",
                             variant === "glass"
@@ -607,7 +606,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       >
         <Link
           href={href}
-          scroll={href.startsWith("#")}
+          scroll={!href.includes("#")}
           className={classNames(
             "flex items-center rounded-lg p-3 text-md font-medium transition-all duration-200 border-l-4",
             variant === "glass"
