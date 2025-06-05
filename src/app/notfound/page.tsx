@@ -5,10 +5,18 @@ import { motion } from "framer-motion";
 import { Ghost } from "lucide-react";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import PageLayout from "@/components/Layouts/PageLayout";
+import SEO from "@/components/SEO/SEO";
 
 export default function NotFound() {
   return (
-    <PageLayout noPadding fullHeight>
+    <>
+      <SEO
+        title="Page Not Found"
+        description="Sorry, the page you are looking for does not exist."
+        url="https://makeitlook.co.uk/notfound"
+        image="/images/og-image.png"
+      />
+      <PageLayout noPadding fullHeight>
       <div className="flex flex-col items-center justify-center">
         <motion.div
           initial={{ y: -10 }}
@@ -32,5 +40,6 @@ export default function NotFound() {
         </Button>
       </div>
     </PageLayout>
+    </>
   );
 }

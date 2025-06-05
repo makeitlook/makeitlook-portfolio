@@ -1,6 +1,15 @@
+import SEO from "@/components/SEO/SEO";
+
 export default function ComingSoon() {
   return (
-    <main className="grid place-items-center min-h-[90dvh] bg-card-background px-6">
+    <>
+      <SEO
+        title="Coming Soon"
+        description="This page is under construction and will be available soon."
+        url="https://makeitlook.co.uk/comingsoon"
+        image="/images/og-image.png"
+      />
+      <main className="grid place-items-center min-h-[90dvh] bg-card-background px-6">
       <div className="text-center">
         <p className="text-base font-semibold text-elements-primary-main">
           Coming Soon
@@ -9,6 +18,7 @@ export default function ComingSoon() {
           Page Under Construction
         </h1>
       </div>
-    </main>
+      </main>
+    </>
   );
 }

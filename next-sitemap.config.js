@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://yourdomain.com", // 🔁 Replace with your actual domain (no trailing slash)
+  siteUrl: "https://makeitlook.co.uk",
   generateRobotsTxt: true, // ✅ Generate robots.txt file
   changefreq: "weekly", // Optional: change frequency for crawlers
   priority: 0.7, // Optional: priority for pages
@@ -19,8 +19,8 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      "https://yourdomain.com/sitemap-0.xml",
-      // "https://yourdomain.com/extra-sitemap.xml", // Add any custom ones here
+      "https://makeitlook.co.uk/sitemap-0.xml",
+      // "https://makeitlook.co.uk/extra-sitemap.xml", // Add any custom ones here
     ],
   },
 };

@@ -2,10 +2,18 @@ import Web3ContactForm from "@/components/ContactForm/ContactForm";
 import PageLayout from "@/components/Layouts/PageLayout";
 import { Mail, Phone, Building2, Instagram } from "lucide-react";
 import { contactInfo } from "@/data/contactData";
+import SEO from "@/components/SEO/SEO";
 
 export default function Contact() {
   return (
-    <section id="contact">
+    <>
+      <SEO
+        title="Contact"
+        description="Get in touch with the Make It Look team to discuss your next project."
+        url="https://makeitlook.co.uk/contact"
+        image="/images/og-image.png"
+      />
+      <section id="contact">
       <PageLayout>
         <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 py-16">
           <div className="relative ">
@@ -77,5 +85,6 @@ export default function Contact() {
         </div>
       </PageLayout>
     </section>
+    </>
   );
 }
