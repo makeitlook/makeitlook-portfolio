@@ -141,14 +141,14 @@ const About = () => {
             we're aligned every step of the way from concept to launch.
           </p>
 
-          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-start">
+          <div className="flex flex-col lg:flex-row gap-8 md:gap-12 items-center lg:items-start">
             {/* Step Selectors */}
-            <div className="w-full lg:w-1/3 flex lg:flex-col gap-3 md:gap-4 justify-center lg:justify-start">
+            <div className="w-full lg:w-1/3 flex flex-wrap justify-center gap-4 lg:flex-col lg:justify-start">
               {processSteps.map((step, i) => (
                 <motion.button
                   key={step.id}
                   onClick={() => setActiveStep(i)}
-                  className={`w-full p-3 md:p-4 rounded-lg text-left transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-elements-primary-main focus-visible:ring-opacity-50
+                  className={`w-full max-w-[320px] p-4 rounded-lg text-center transition-all duration-300 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-elements-primary-main focus-visible:ring-opacity-50
                     ${
                       activeStep === i
                         ? "bg-elements-primary-main text-elements-primary-contrastText shadow-lg scale-105"
@@ -157,38 +157,37 @@ const About = () => {
                   aria-pressed={activeStep === i}
                   whileHover={{ y: activeStep !== i ? -2 : 0 }}
                   whileTap={{ scale: 0.98 }}
+                  type="button"
                 >
-                  <div className="flex items-center">
-                    {/* step.icon */} {/* Uncomment if you add icons */}
-                    <span className="font-semibold text-sm sm:text-base">{`0${
-                      i + 1
-                    }. ${step.title}`}</span>
-                  </div>
+                  <span className="font-semibold text-base sm:text-lg">{`0${
+                    i + 1
+                  }. ${step.title}`}</span>
                 </motion.button>
               ))}
             </div>
-            {/* Step Description */}
 
-            <div className="w-full lg:w-2/3 min-h-[200px] md:min-h-[250px]">
-              {/* Added min-height to reduce layout shift */}
+            {/* Step Description */}
+            <div className="w-full lg:w-2/3 min-h-[220px] md:min-h-[280px] flex justify-center">
               <motion.div
-                key={activeStep} // Re-animate when step changes
+                key={activeStep}
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="bg-card-background p-6 md:p-8 rounded-xl shadow-xl text-text-primary h-full flex flex-col justify-center"
+                transition={{ duration: 0.5, ease: "easeInOut" }}
+                className="bg-card-background p-6 md:p-8 rounded-xl shadow-xl text-text-primary flex flex-col items-center max-w-md"
               >
                 {/* Image for the step */}
-                <div className="mx-auto w-48 h-48 relative">
-                  <Image
-                    src={processSteps[activeStep].image} // make sure processSteps items have an image prop with valid path
-                    alt={processSteps[activeStep].title}
-                    fill
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+                {processSteps[activeStep].image && (
+                  <div className="mb-6 w-48 h-48 relative">
+                    <Image
+                      src={processSteps[activeStep].image}
+                      alt={processSteps[activeStep].title}
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                )}
 
                 <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-elements-primary-main text-center">
                   {processSteps[activeStep].title}
