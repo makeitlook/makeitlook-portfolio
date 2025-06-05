@@ -7,3 +7,4 @@ Host: https://makeitlook.co.uk
 
 # Sitemaps
 Sitemap: https://makeitlook.co.uk/sitemap.xml
+Sitemap: https://makeitlook.co.uk/sitemap-0.xml
