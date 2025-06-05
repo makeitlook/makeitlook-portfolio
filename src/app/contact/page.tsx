@@ -15,7 +15,7 @@ export default function Contact() {
       />
       <section id="contact">
         <PageLayout>
-          <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2">
+          <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 pb-12">
             <div className="relative ">
               <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
                 <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-elements-secondary-contrastText">
