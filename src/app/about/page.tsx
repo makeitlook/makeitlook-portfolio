@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { skills, processSteps } from "@/data/aboutData";
 import Image from "next/image";
+import SEO from "@/components/SEO/SEO";
 
 // If you have specific icons, you might import them like this:
 // import { BriefcaseIcon, LightBulbIcon, CodeIcon, RocketIcon } from '@heroicons/react/24/outline'; // Example
@@ -36,7 +37,14 @@ const About = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-text-primary">
+    <>
+      <SEO
+        title="About"
+        description="Learn more about Make It Look's design process and expertise."
+        url="https://makeitlook.co.uk/about"
+        image="/images/og-image.png"
+      />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 text-text-primary">
       {/* Top Section */}
       <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-start mb-20 md:mb-32">
         {/* Left - Sticky Heading */}
@@ -202,6 +210,7 @@ const About = () => {
         </div>
       </motion.section>
     </div>
+    </>
   );
 };
 

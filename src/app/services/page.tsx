@@ -8,6 +8,7 @@ import { FloatingElement } from "@/components/FloatingElement/FloatingElement";
 import { ServiceCard } from "@/components/ServiceCard/ServiceCard";
 import Button from "@/components/Button/Button";
 import { services } from "@/data/servicesData";
+import SEO from "@/components/SEO/SEO";
 
 const Services = () => {
   const [visibleCards, setVisibleCards] = useState(new Set());
@@ -22,7 +23,14 @@ const Services = () => {
 
 
   return (
-    <div className="min-h-screen py-16 px-4 relative overflow-hidden">
+    <>
+      <SEO
+        title="Services"
+        description="Discover the design and development services offered by Make It Look."
+        url="https://makeitlook.co.uk/services"
+        image="/images/og-image.png"
+      />
+      <div className="min-h-screen py-16 px-4 relative overflow-hidden">
       <FloatingElement delay={0} className="top-20 left-10 opacity-20">
         <div className="w-16 h-16 bg-elements-primary-main rounded-full blur-sm"></div>
       </FloatingElement>
@@ -80,6 +88,7 @@ const Services = () => {
         </div> */}
       </div>
     </div>
+    </>
   );
 };
 

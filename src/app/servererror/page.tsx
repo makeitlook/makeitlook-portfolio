@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { TailSpin } from "react-loader-spinner"; // Or your own Spinner
 import Button from "@/components/Button/Button";
 import PageLayout from "@/components/Layouts/PageLayout";
+import SEO from "@/components/SEO/SEO";
 
 const ErrorIcon = AlertCircle;
 
@@ -28,7 +29,14 @@ export default function ServerErrorPage() {
   }
 
   return (
-    <PageLayout noPadding fullHeight>
+    <>
+      <SEO
+        title="Server Error"
+        description="An unexpected error occurred. Please try again later."
+        url="https://makeitlook.co.uk/servererror"
+        image="/images/og-image.png"
+      />
+      <PageLayout noPadding fullHeight>
       <div className="flex flex-col items-center justify-center text-center px-4">
         <motion.div
           initial={{ scale: 1 }}
@@ -53,5 +61,6 @@ export default function ServerErrorPage() {
         </Button>
       </div>
     </PageLayout>
+    </>
   );
 }
