@@ -13,7 +13,7 @@ const ProjectsIndex: React.FC = () => {
         url="https://makeitlook.co.uk/projects"
         image="/images/og-image.png"
       />
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4 pt-6">
         <ProjectsGrid />
       </div>
     </>

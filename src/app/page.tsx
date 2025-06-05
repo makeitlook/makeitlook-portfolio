@@ -56,7 +56,7 @@ export default function Home() {
           </AnimatedDiv>
         </section>
 
-        <section id="services" className="pt-12">
+        <section id="services">
           <Services />
         </section>
       </div>
@@ -71,7 +71,7 @@ export default function Home() {
           colorClass="elements-primary-main"
           opacity={0.15}
         />
-        <section id="about" className="pt-12">
+        <section id="about">
           <About />
         </section>
 
