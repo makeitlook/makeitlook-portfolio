@@ -282,11 +282,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   };
 
   // Helper to build href for single page navigation on slug pages
-  const getHref = (
-    sectionId?: string,
-    path?: string,
-    href?: string,
-  ) => {
+  const getHref = (sectionId?: string, path?: string, href?: string) => {
     if (navMode === "single" && sectionId) {
       return pathname === "/" ? `#${sectionId}` : `/#${sectionId}`;
     }
@@ -356,7 +352,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                       const subHref = getHref(
                         subItem.sectionId,
                         subItem.path,
-                        subItem.href,
+                        subItem.href
                       );
                       const subShouldScroll =
                         subHref.startsWith("#") || !subHref.includes("#");
@@ -448,6 +444,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   // Mobile nav item renderer with enhanced animations and styling
   const renderMobileNavItem = (item: NavItem, index: number) => {
     const href = getHref(item.sectionId, item.path, item.href);
+    const shouldScroll = href.startsWith("#") || !href.includes("#");
     const isActive =
       navMode === "single"
         ? activeSection === item.sectionId
@@ -541,7 +538,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                     const subHref = getHref(
                       subItem.sectionId,
                       subItem.path,
-                      subItem.href,
+                      subItem.href
                     );
                     const subShouldScroll =
                       subHref.startsWith("#") || !subHref.includes("#");

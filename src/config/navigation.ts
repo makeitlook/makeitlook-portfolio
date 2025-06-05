@@ -31,7 +31,7 @@ export function useNavigationConfig(): {
   const navigationItems: NavigationItem[] = useMemo(
     () => [
       {
-        name: "",
+        name: "Home",
         sectionId: "home",
         path: "/",
         current: pathname === "/",

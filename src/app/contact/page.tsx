@@ -71,7 +71,7 @@ export default function Contact() {
               </dl>
             </div>
           </div>
-          <div className="bg-neutral-dimmed p-4 rounded-md">
+          <div className="bg-neutral-dimmed p-4 rounded-md mt-8 sm:mt-0">
             <Web3ContactForm accessKey="400d16a4-fddd-41ab-9f18-1836a575faa2" />
           </div>
         </div>
