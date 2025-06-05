@@ -1,38 +1,24 @@
 import Web3ContactForm from "@/components/ContactForm/ContactForm";
 import PageLayout from "@/components/Layouts/PageLayout";
-import { Mail, Phone, Building2 } from "lucide-react";
+import { Mail, Phone, Building2, Instagram } from "lucide-react";
 import { contactInfo } from "@/data/contactData";
 
 export default function Contact() {
   return (
     <section id="contact">
       <PageLayout>
-        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 space-y-12">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 lg:grid-cols-2 py-16">
           <div className="relative ">
             <div className="mx-auto max-w-xl lg:mx-0 lg:max-w-lg">
-              <h2 className="text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-                Get in touch
+              <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-elements-secondary-contrastText">
+                Let&#39;s{" "}
+                <span className="text-elements-primary-main">Connect</span>
               </h2>
               <p className="mt-6 text-lg/8 text-gray-600">
-                Proin volutpat consequat porttitor cras nullam gravida at. Orci
-                molestie a eu arcu. Sed ut tincidunt integer elementum id sem.
-                Arcu sed malesuada et magna.
+                Got a project in mind? Fill out the form below or reach out
+                through any of these channels.
               </p>
               <dl className="mt-10 space-y-4 text-base/7 text-gray-600">
-                <div className="flex gap-x-4">
-                  <dt className="flex-none">
-                    <span className="sr-only">Address</span>
-                    <Building2
-                      aria-hidden="true"
-                      className="h-7 w-6 text-gray-400"
-                    />
-                  </dt>
-                  <dd>
-                    {contactInfo.addressLine1}
-                    <br />
-                    {contactInfo.addressLine2}
-                  </dd>
-                </div>
                 <div className="flex gap-x-4">
                   <dt className="flex-none">
                     <span className="sr-only">Telephone</span>
@@ -42,7 +28,10 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    <a href={`tel:${contactInfo.phone}`} className="hover:text-gray-900">
+                    <a
+                      href={`tel:${contactInfo.phone}`}
+                      className="hover:text-gray-900"
+                    >
                       {contactInfo.phone}
                     </a>
                   </dd>
@@ -56,8 +45,26 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    <a href={`mailto:${contactInfo.email}`} className="hover:text-gray-900">
+                    <a
+                      href={`mailto:${contactInfo.email}`}
+                      className="hover:text-gray-900"
+                    >
                       {contactInfo.email}
+                    </a>
+                  </dd>
+                </div>
+                <div className="flex gap-x-4">
+                  <dt className="flex-none">
+                    <span className="sr-only">Instagram</span>
+                    <Instagram className="h-6 w-6" />
+                  </dt>
+                  <dd>
+                    <a
+                      href="https://www.instagram.com/makeitlook_"
+                      target="_blank"
+                      className="cursor-pointer"
+                    >
+                      <p className="text-text-primary">@makeitlook_</p>
                     </a>
                   </dd>
                 </div>
@@ -65,7 +72,7 @@ export default function Contact() {
             </div>
           </div>
           <div className="bg-neutral-dimmed p-4 rounded-md">
-            {/* <Web3ContactForm /> */}
+            <Web3ContactForm accessKey="400d16a4-fddd-41ab-9f18-1836a575faa2" />
           </div>
         </div>
       </PageLayout>

@@ -56,7 +56,7 @@ const PrivacyPolicyContent = () => (
       <h3 className="text-lg font-semibold mb-2">5. Contact Us</h3>
       <p>
         If you have any questions about this privacy policy, please contact us
-        at privacy@company.com
+        at info@makeitlook.co.uk
       </p>
     </section>
   </>

@@ -7,6 +7,7 @@ import Services from "./services/page";
 import { CTA } from "@/components/CTA/CTA";
 import ProjectsIndex from "./projects/page";
 import GeometricOverlay from "@/components/Backgrounds/GeometricOverlay/GerometricOverlay";
+import Contact from "./contact/page";
 
 export default function Home() {
   return (
@@ -76,6 +77,10 @@ export default function Home() {
 
         <section id="portfolio">
           <ProjectsIndex />
+        </section>
+
+        <section id="contact">
+          <Contact />
         </section>
       </div>
     </>
