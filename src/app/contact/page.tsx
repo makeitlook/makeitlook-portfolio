@@ -27,7 +27,7 @@ export default function Contact() {
                   through any of these channels.
                 </p>
                 <dl className="mt-10 space-y-4 text-base/7 text-gray-600">
-                  <div className="flex gap-x-4">
+                  {/* <div className="flex gap-x-4">
                     <dt className="flex-none">
                       <span className="sr-only">Telephone</span>
                       <Phone
@@ -43,7 +43,7 @@ export default function Contact() {
                         {contactInfo.phone}
                       </a>
                     </dd>
-                  </div>
+                  </div> */}
                   <div className="flex gap-x-4">
                     <dt className="flex-none">
                       <span className="sr-only">Email</span>
