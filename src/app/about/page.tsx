@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { skills, processSteps } from "@/data/aboutData";
+import Image from "next/image";
+
 // If you have specific icons, you might import them like this:
 // import { BriefcaseIcon, LightBulbIcon, CodeIcon, RocketIcon } from '@heroicons/react/24/outline'; // Example
 
@@ -165,10 +167,9 @@ const About = () => {
                 </motion.button>
               ))}
             </div>
-
             {/* Step Description */}
+
             <div className="w-full lg:w-2/3 min-h-[200px] md:min-h-[250px]">
-              {" "}
               {/* Added min-height to reduce layout shift */}
               <motion.div
                 key={activeStep} // Re-animate when step changes
@@ -176,13 +177,24 @@ const About = () => {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="bg-card-background p-6 md:p-8 rounded-xl shadow-xl text-text-primary h-full flex flex-col justify-center" // Added shadow-xl
+                className="bg-card-background p-6 md:p-8 rounded-xl shadow-xl text-text-primary h-full flex flex-col justify-center"
               >
-                {/* processSteps[activeStep].icon && <div className="mb-3 text-elements-primary-main">{React.cloneElement(processSteps[activeStep].icon, {className: "w-8 h-8"})}</div> */}
-                <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-elements-primary-main">
+                {/* Image for the step */}
+                <div className="mx-auto w-48 h-48 relative">
+                  <Image
+                    src={processSteps[activeStep].image} // make sure processSteps items have an image prop with valid path
+                    alt={processSteps[activeStep].title}
+                    fill
+                    className="object-contain"
+                    priority
+                  />
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-semibold mb-3 text-elements-primary-main text-center">
                   {processSteps[activeStep].title}
                 </h3>
-                <p className="text-text-secondary leading-relaxed text-sm sm:text-base">
+
+                <p className="text-text-secondary leading-relaxed text-sm sm:text-base text-center">
                   {processSteps[activeStep].description}
                 </p>
               </motion.div>

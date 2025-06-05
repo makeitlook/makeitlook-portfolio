@@ -29,12 +29,10 @@ const ProjectsGrid: React.FC = () => {
         <div className="inline-flex items-center gap-2 text-elements-secondary-main mb-4">
           <Pencil className="w-8 h-8 text-elements-primary-main animate-pulse" />
           <span className="text-sm font-semibold uppercase tracking-wider text-text-secondary">
-            Projects Portfolio
+            Recent Work
           </span>
         </div>
-        <h2 className="text-6xl font-bold mb-6 text-text-primary">
-          Recent Work
-        </h2>
+        <h2 className="text-6xl font-bold mb-6 text-text-primary">Portfolio</h2>
         <p className="text-xl text-text-secondary max-w-2xl mx-auto leading-relaxed">
           Search projects by title or filter by category
         </p>
@@ -43,7 +41,7 @@ const ProjectsGrid: React.FC = () => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10 max-w-5xl mx-auto px-4">
+      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mb-10 mx-auto px-4">
         <div className="flex items-center gap-2 border border-border-dimmed rounded-lg px-3 py-2 w-full sm:max-w-xs bg-background-secondary">
           <IconWrapper icon={Search} className="text-text-secondary w-5 h-5" />
           <input

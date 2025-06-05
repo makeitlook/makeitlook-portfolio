@@ -1,42 +1,53 @@
 export const skills = [
   "UI Design",
-  "UX Design",
-  "User Research",
-  "Figma",
-  "Prototyping",
-  "Design System",
-  "Interaction Design",
-  "Usability Testing",
-  "Wireframing",
-  "UI Animation",
-  "Logo Design",
-  "Framer Development",
-  "Pitchdeck Design",
+  "UX Strategy",
+  "Prototyping & Interaction",
+  "Figma & Design Systems",
+  "Brand Identity",
+  "Presentation Design",
+  "Digital Marketing Content",
+  "Web Design",
+  "Responsive Design",
+  "User-Centered Design",
+  "Video Editing",
+  "Adobe Suite",
+  "React",
 ];
 
 export const processSteps = [
   {
-    id: "brief",
-    title: "Project Brief",
+    id: "initial-contact",
+    title: "Initial Contact",
     description:
-      "Understanding your goals, audience, and challenges to build a solid foundation for the project. We'll dive deep into your vision and requirements.",
+      "Got an idea? Reach out and share it. The first chat covers your needs, expectations, budget, timeline, and design preferences to set the stage.",
+    image: "/images/process/initial-contact.png",
   },
   {
-    id: "design",
-    title: "Design & Prototype",
+    id: "proposal-quote",
+    title: "Proposal & Quote",
     description:
-      "Creating innovative designs and interactive prototypes that bring your vision to life. Expect pixel-perfect mockups and clickable prototypes.",
+      "After understanding your needs, A detailed proposal follows and deposit is required to secure your spot and begin the design process.",
+    image: "/images/process/proposal-quote.png",
   },
   {
-    id: "develop",
-    title: "Development & Testing",
+    id: "design-phase",
+    title: "Design Phase",
     description:
-      "Building robust solutions with rigorous testing to ensure flawless performance across all devices. Quality assurance is key at this stage.",
+      "Once the deposit is received, initial concepts are created for review. Feedback is incorporated until the design is just right.",
+    image: "/images/process/design-phase.png",
   },
   {
-    id: "launch",
-    title: "Launch & Optimize",
+    id: "final-approval",
+    title: "Final Approval",
     description:
-      "Deploying your project and continuously optimizing for maximum impact and growth. We'll monitor performance and iterate based on feedback.",
+      "A final proof is sent for your approval. This is the last chance to request changes before the design moves into production or delivery.",
+    image: "/images/process/final-approval.png",
+  },
+  {
+    id: "bringing-to-life",
+    title: "Bringing It To Life",
+    description:
+      "Once approved, the design is moved to production or final formatting. Delivery details are confirmed, and the remaining payment is completed.",
+    image: "/images/process/bringing-to-life.png",
   },
 ];

@@ -1,11 +1,12 @@
 import AnimatedDiv from "@/components/AnimatedDiv/AnimatedDiv";
 import SEO from "@/components/SEO/SEO";
 import HeroSection from "@/components/HeroSection/HeroSection";
-import { AnimatedBackground } from "@/components/AnimatedBackground/AnimatedBackground";
+import { AnimatedBackground } from "@/components/Backgrounds/AnimatedBackground/AnimatedBackground";
 import About from "./about/page";
 import Services from "./services/page";
 import { CTA } from "@/components/CTA/CTA";
 import ProjectsIndex from "./projects/page";
+import GeometricOverlay from "@/components/Backgrounds/GeometricOverlay/GerometricOverlay";
 
 export default function Home() {
   return (
@@ -44,6 +45,11 @@ export default function Home() {
         </div>
 
         <section id="home">
+          <GeometricOverlay
+            variant="geometric"
+            colorClass="elements-primary-main"
+            opacity={0.08}
+          />
           <AnimatedDiv>
             <HeroSection />
           </AnimatedDiv>
@@ -58,13 +64,20 @@ export default function Home() {
         <CTA />
       </div>
 
-      <section id="about" className="pt-12">
-        <About />
-      </section>
+      <div className="relative">
+        <GeometricOverlay
+          variant="geometric-alt"
+          colorClass="elements-primary-main"
+          opacity={0.15}
+        />
+        <section id="about" className="pt-12">
+          <About />
+        </section>
 
-      <section id="portfolio">
-        <ProjectsIndex />
-      </section>
+        <section id="portfolio">
+          <ProjectsIndex />
+        </section>
+      </div>
     </>
   );
 }
