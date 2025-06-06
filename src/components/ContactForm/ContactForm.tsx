@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import PrivacyPolicyModal from "@/components/Modal/PrivacyPolicyModal";
 import { motion } from "framer-motion";
-import Modal from "../Modal/Modal";
+import Modal from "@/components/Modal/Modal";
 
 // Toast Component
 const Toast = ({
