@@ -49,6 +49,8 @@ const ContactForm: React.FC<FormsProps> = ({
   const [isPrivacyAgreedModalOpen, setIsPrivacyAgreedModalOpen] =
     useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [errorModalMessage, setErrorModalMessage] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState<"success" | "error">("success");
@@ -118,6 +120,8 @@ const ContactForm: React.FC<FormsProps> = ({
         error instanceof Error
           ? error.message
           : "An error occurred during submission.";
+      setErrorModalMessage(errorMessage);
+      setIsErrorModalOpen(true);
       setShowToast(true);
       setToastMessage(errorMessage);
       setToastType("error");
@@ -311,6 +315,15 @@ const ContactForm: React.FC<FormsProps> = ({
         title="Submission Successful"
       >
         Thank you for contacting us! We will get back to you shortly.
+      </Modal>
+
+      {/* Error Modal */}
+      <Modal
+        isOpen={isErrorModalOpen}
+        onClose={() => setIsErrorModalOpen(false)}
+        title="Submission Failed"
+      >
+        {errorModalMessage || "An error occurred while submitting the form."}
       </Modal>
 
       {/* Toast */}

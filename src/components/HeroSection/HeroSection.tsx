@@ -52,7 +52,7 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg sm:text-xl text-text-secondary leading-relaxed max-w-2xl mx-auto py-8"
+            className="text-lg sm:text-xl text-text-secondary leading-relaxed sm:max-w-2xl max-w-xs mx-auto py-8"
           >
             Make It Look transforms bold ideas into elegant digital and print
             experiences — designed to captivate, inspire, and convert.
