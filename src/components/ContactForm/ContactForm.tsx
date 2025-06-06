@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import PrivacyPolicyModal from "@/components/Modal/PrivacyPolicyModal";
 import { motion } from "framer-motion";
 import Modal from "@/components/Modal/Modal";
-import Button from "@/components/Button/Button";
 
 // Toast Component
 const Toast = ({
@@ -12,16 +11,18 @@ const Toast = ({
 }: {
   message: string;
   type: "success" | "error";
-}) => (
-  <div
-    className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-80 px-4 py-2 rounded-md text-text-clear ${
-      type === "success" ? "bg-green-500" : "bg-red-500"
-    }`}
-    style={{ zIndex: 9999 }}
-  >
-    <p>{message}</p>
-  </div>
-);
+}) => {
+  return (
+    <div
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-80 px-4 py-2 rounded-md text-text-clear ${
+        type === "success" ? "bg-green-500" : "bg-red-500"
+      }`}
+      style={{ zIndex: 9999 }}
+    >
+      <p>{message}</p>
+    </div>
+  );
+};
 
 interface FormsProps {
   title?: string;
@@ -37,9 +38,9 @@ const ContactForm: React.FC<FormsProps> = ({
   description,
 }) => {
   const [formData, setFormData] = useState({
-    name: "",
+    name: "", // Changed from firstName + lastName to match web3forms expectation
     email: "",
-    phone: "",
+    phone: "", // Changed from phoneNumber to match common form field names
     company: "",
     message: "",
   });
@@ -49,26 +50,19 @@ const ContactForm: React.FC<FormsProps> = ({
   const [isPrivacyAgreedModalOpen, setIsPrivacyAgreedModalOpen] =
     useState(false);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
-  const [errorModalMessage, setErrorModalMessage] = useState("");
   const [showToast, setShowToast] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState<"success" | "error">("success");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Check if all required fields are non-empty and privacy is agreed
-  const isFormValid =
-    formData.name.trim() !== "" &&
-    formData.email.trim() !== "" &&
-    formData.phone.trim() !== "" &&
-    formData.message.trim() !== "" &&
-    agreed;
-
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -79,18 +73,26 @@ const ContactForm: React.FC<FormsProps> = ({
       return;
     }
 
-    if (!isFormValid) return;
-
     try {
       setIsSubmitting(true);
 
+      // Create FormData object for proper submission
       const submitData = new FormData();
       submitData.append("access_key", accessKey);
+
+      // Add all form fields to FormData
       Object.entries(formData).forEach(([key, value]) => {
         submitData.append(key, value);
       });
+
+      // Add honeypot field to prevent spam (recommended by web3forms)
       submitData.append("botcheck", "");
+
+      // You can add a custom subject
       submitData.append("subject", "New Enquiry");
+
+      // Optional: add a redirect URL after successful submission
+      // submitData.append("redirect", "https://yourwebsite.com/thanks");
 
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
@@ -100,6 +102,7 @@ const ContactForm: React.FC<FormsProps> = ({
       const data = await response.json();
 
       if (data.success) {
+        // Open the success modal and clear the form if successful
         setIsSuccessModalOpen(true);
         setFormData({
           name: "",
@@ -108,7 +111,6 @@ const ContactForm: React.FC<FormsProps> = ({
           company: "",
           message: "",
         });
-        setAgreed(false);
         setShowToast(true);
         setToastMessage("Form submitted successfully!");
         setToastType("success");
@@ -116,12 +118,11 @@ const ContactForm: React.FC<FormsProps> = ({
         throw new Error(data.message || "Form submission failed");
       }
     } catch (error) {
+      // Type narrowing
       const errorMessage =
         error instanceof Error
           ? error.message
           : "An error occurred during submission.";
-      setErrorModalMessage(errorMessage);
-      setIsErrorModalOpen(true);
       setShowToast(true);
       setToastMessage(errorMessage);
       setToastType("error");
@@ -159,7 +160,7 @@ const ContactForm: React.FC<FormsProps> = ({
           />
 
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-            {/* Name Field */}
+            {/* Name Field (Combined) */}
             <div className="sm:col-span-2">
               <label
                 htmlFor="name"
@@ -167,16 +168,18 @@ const ContactForm: React.FC<FormsProps> = ({
               >
                 Name*
               </label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-                className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
-              />
+              <div className="mt-2.5">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your Name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                />
+              </div>
             </div>
 
             {/* Company (Optional) */}
@@ -187,15 +190,17 @@ const ContactForm: React.FC<FormsProps> = ({
               >
                 Company
               </label>
-              <input
-                id="company"
-                name="company"
-                type="text"
-                placeholder="Your Company (Optional)"
-                value={formData.company}
-                onChange={handleChange}
-                className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
-              />
+              <div className="mt-2.5">
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  placeholder="Your Company (Optional)"
+                  value={formData.company}
+                  onChange={handleChange}
+                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                />
+              </div>
             </div>
 
             {/* Email */}
@@ -206,16 +211,18 @@ const ContactForm: React.FC<FormsProps> = ({
               >
                 Email*
               </label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="you@example.com"
-                value={formData.email}
-                onChange={handleChange}
-                required
-                className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
-              />
+              <div className="mt-2.5">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="you@company.com"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                />
+              </div>
             </div>
 
             {/* Phone Number */}
@@ -226,16 +233,18 @@ const ContactForm: React.FC<FormsProps> = ({
               >
                 Phone number*
               </label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                placeholder="07911 123456"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-                className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
-              />
+              <div className="mt-2.5">
+                <input
+                  id="phone"
+                  name="phone" // Changed to match common form field names
+                  type="tel"
+                  placeholder="07911 123456"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                />
+              </div>
             </div>
 
             {/* Message */}
@@ -246,30 +255,34 @@ const ContactForm: React.FC<FormsProps> = ({
               >
                 Message*
               </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                placeholder="Leave us a message..."
-                value={formData.message}
-                onChange={handleChange}
-                required
-                className="block w-full rounded-md bg-card-background px-3.5 py-2 text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
-              />
+              <div className="mt-2.5">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  placeholder="Leave us a message..."
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="block w-full text-sm rounded-md bg-card-background px-3.5 py-2 text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                />
+              </div>
             </div>
 
             {/* Privacy Policy Agreement */}
-            <div className="flex gap-x-4 sm:col-span-2 items-center">
-              <input
-                type="checkbox"
-                id="privacy-policy"
-                checked={agreed}
-                onChange={() => setAgreed(!agreed)}
-                className="rounded text-elements-primary-main focus:ring-elements-primary-shadow"
-              />
+            <div className="flex gap-x-4 sm:col-span-2">
+              <div className="flex h-6 items-center">
+                <input
+                  type="checkbox"
+                  id="privacy-policy"
+                  checked={agreed}
+                  onChange={() => setAgreed(!agreed)}
+                  className="rounded text-elements-primary-main focus:ring-elements-primary-shadow"
+                />
+              </div>
               <label
                 htmlFor="privacy-policy"
-                className="text-sm text-text-tertiary cursor-pointer"
+                className="text-sm text-text-tertiary"
               >
                 By selecting this, you agree to our{" "}
                 <button
@@ -285,10 +298,14 @@ const ContactForm: React.FC<FormsProps> = ({
           </div>
 
           {/* Submit Button */}
-          <div className="mt-10 w-full">
-            <Button type="continue" disabled={isSubmitting || !isFormValid}>
+          <div className="mt-10">
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className="block w-full rounded-md bg-elements-primary-main px-3.5 py-2.5 text-center text-sm font-semibold text-elements-primary-contrastText shadow-sm hover:bg-elements-primary-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-elements-primary-main transition-all duration-300 disabled:opacity-70"
+            >
               {isSubmitting ? "Submitting..." : "Submit"}
-            </Button>
+            </button>
           </div>
         </form>
       </div>
@@ -315,15 +332,6 @@ const ContactForm: React.FC<FormsProps> = ({
         title="Submission Successful"
       >
         Thank you for contacting us! We will get back to you shortly.
-      </Modal>
-
-      {/* Error Modal */}
-      <Modal
-        isOpen={isErrorModalOpen}
-        onClose={() => setIsErrorModalOpen(false)}
-        title="Submission Failed"
-      >
-        {errorModalMessage || "An error occurred while submitting the form."}
       </Modal>
 
       {/* Toast */}
